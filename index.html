@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>施博瀚 · 个人作品集</title>
+  <meta name="description" content="施博瀚的个人作品集 —— 产品设计师 / 创造者。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="layout">
+    <!-- 左侧固定边栏 -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__inner">
+        <nav class="nav">
+          <a href="#home" class="nav__link is-active" data-target="home">首页</a>
+          <a href="#work" class="nav__link" data-target="work">作品</a>
+          <a href="#about" class="nav__link" data-target="about">关于</a>
+          <a href="mailto:hello@example.com" class="nav__link nav__link--ghost">邮箱</a>
+        </nav>
+
+        <div class="intro">
+          <h1 class="intro__title">我是博瀚。<br />把想法<br />变成产品。</h1>
+        </div>
+
+        <div class="profile">
+          <img class="profile__avatar" src="https://avatars.githubusercontent.com/u/0?v=4" alt="头像" onerror="this.style.display='none'" />
+          <div class="profile__social">
+            <a href="mailto:hello@example.com" aria-label="邮箱" title="邮箱">✉</a>
+            <a href="#" aria-label="X" title="X">𝕏</a>
+            <a href="#" aria-label="LinkedIn" title="LinkedIn">in</a>
+            <a href="#" aria-label="作品集" title="网站">◎</a>
+          </div>
+          <div class="profile__meta">
+            <p class="profile__name">施博瀚</p>
+            <p class="profile__role">高级产品设计师</p>
+            <p class="profile__exp">12 年从业经验</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 右侧内容区 -->
+    <main class="content">
+      <section class="section" id="home">
+        <h2 class="section__title">精选作品</h2>
+        <div class="work-grid">
+          <article class="work-card" style="--accent:#c5f04a;">
+            <div class="work-card__media" data-label="Streamline CRM"></div>
+            <div class="work-card__caption">
+              <span class="work-card__name">Streamline CRM</span>
+              <span class="work-card__tag">产品设计 · 2024</span>
+            </div>
+          </article>
+          <article class="work-card" style="--accent:#e9d8c2;">
+            <div class="work-card__media" data-label="Orbit Dashboard"></div>
+            <div class="work-card__caption">
+              <span class="work-card__name">Orbit Dashboard</span>
+              <span class="work-card__tag">数据可视化 · 2023</span>
+            </div>
+          </article>
+          <article class="work-card" style="--accent:#a9c7ff;">
+            <div class="work-card__media" data-label="Bloomly Onboarding"></div>
+            <div class="work-card__caption">
+              <span class="work-card__name">Bloomly Onboarding</span>
+              <span class="work-card__tag">交互设计 · 2023</span>
+            </div>
+          </article>
+          <article class="work-card" style="--accent:#f3a9c7;">
+            <div class="work-card__media" data-label="NovaPay Mobile"></div>
+            <div class="work-card__caption">
+              <span class="work-card__name">NovaPay Mobile</span>
+              <span class="work-card__tag">移动端 · 2022</span>
+            </div>
+          </article>
+        </div>
+        <a href="#work" class="link-all">查看全部项目 →</a>
+      </section>
+
+      <section class="section" id="work">
+        <h2 class="section__title">他人评价</h2>
+        <div class="quote-grid">
+          <blockquote class="quote">
+            <p>"博瀚的设计干净、有思考，始终扎根于真实的用户需求。每一个像素都带着策略。"</p>
+            <footer><strong>Rachel Whitmore</strong> · NovaPay 产品负责人</footer>
+          </blockquote>
+          <blockquote class="quote">
+            <p>"他对待每个项目都充满好奇与精确，作品总能反映出深度的思考。"</p>
+            <footer><strong>Colin Blake</strong> · Cloudnest CTO</footer>
+          </blockquote>
+          <blockquote class="quote">
+            <p>"在我们的产品改版中，他是一股创造力——快速、协作，专注于真实影响。"</p>
+            <footer><strong>Lucía Fernández</strong> · Welo App 创始人</footer>
+          </blockquote>
+          <blockquote class="quote">
+            <p>"他用结构、清晰与同理心帮助我们重塑了产品。是你想要的那种设计师。"</p>
+            <footer><strong>Carlos Dominguez</strong> · Lumio Health 产品主管</footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <h2 class="section__title">技能</h2>
+        <ul class="chips">
+          <li>UX 设计</li><li>UI 设计</li><li>网页设计</li><li>交互设计</li>
+          <li>响应式设计</li><li>原型设计</li><li>设计系统</li><li>用户研究</li>
+        </ul>
+
+        <h2 class="section__title section__title--gap">技术栈</h2>
+        <ul class="chips chips--soft">
+          <li>Figma</li><li>Slack</li><li>ChatGPT</li><li>Framer</li>
+          <li>Webflow</li><li>Cursor</li><li>Rive</li><li>Notion</li>
+        </ul>
+
+        <h2 class="section__title section__title--gap">工作经历</h2>
+        <div class="timeline">
+          <div class="timeline__item">
+            <div class="timeline__head">
+              <h3>高级产品设计师</h3><span>2022 – 至今</span>
+            </div>
+            <p class="timeline__org">NovaTech · 旧金山</p>
+            <p class="timeline__desc">主导 B2B SaaS 工具的端到端产品设计，与跨职能团队协作上线功能，用户留存提升 35%，并指导初级设计师扩展设计系统。</p>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__head">
+              <h3>产品设计师</h3><span>2020 – 2022</span>
+            </div>
+            <p class="timeline__org">Coreloop · 远程</p>
+            <p class="timeline__desc">重新设计公司旗舰移动应用，用户参与度提升 25%。推动用户研究，并将无障碍标准引入工作流程。</p>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__head">
+              <h3>UX/UI 设计师</h3><span>2018 – 2020</span>
+            </div>
+            <p class="timeline__org">PixelWorks Studio · 纽约</p>
+            <p class="timeline__desc">专注电商与营销网站的用户流程与线框图，与开发和客户紧密协作交付高转化落地页，引入可用性测试实践。</p>
+          </div>
+        </div>
+
+        <footer class="content__footer">
+          <p>想一起做点什么？<a href="mailto:hello@example.com">给我发邮件 →</a></p>
+          <p class="content__copy">© 2026 施博瀚 · 风格参考 Minfolio</p>
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
