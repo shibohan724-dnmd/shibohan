@@ -26,6 +26,22 @@ body {
   line-height: 1.5;
 }
 
+/* 背景氛围底纹：细点网格 + 主题绿角落柔光（固定在视口，随主题色变化） */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px) 0 0 / 24px 24px,
+    radial-gradient(70% 60% at 10% -5%,
+      color-mix(in srgb, var(--accent) 9%, transparent), transparent 60%),
+    radial-gradient(55% 55% at 105% 108%,
+      color-mix(in srgb, var(--accent) 6%, transparent), transparent 60%),
+    var(--bg);
+}
+
 a { color: inherit; text-decoration: none; }
 
 .layout {
@@ -114,13 +130,13 @@ a { color: inherit; text-decoration: none; }
 
 .profile__social a:hover { color: var(--text); }
 
-.profile__name { font-weight: 600; font-size: 15px; }
+.profile__name { font-weight: 600; font-size: 18px; }
 .profile__role { color: var(--text-dim); font-size: 13px; margin-top: 2px; }
 .profile__exp { color: var(--text-faint); font-size: 13px; }
 
 /* ---------- Content ---------- */
 .content {
-  padding: clamp(24px, 3vw, 40px) clamp(22px, 4vw, 56px) 80px;
+  padding: clamp(24px, 3vw, 40px) clamp(22px, 4vw, 56px) 80px clamp(60px, 10vw, 140px);
   max-width: calc(var(--max-content) + 112px);
 }
 
@@ -140,6 +156,9 @@ a { color: inherit; text-decoration: none; }
 .work-grid { display: grid; gap: 18px; }
 
 .work-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
   background: var(--card);
   border-radius: var(--radius);
   overflow: hidden;
@@ -153,7 +172,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .work-card__media {
-  height: clamp(220px, 38vw, 360px);
+  aspect-ratio: 16 / 9;
   background:
     radial-gradient(120% 120% at 70% 20%, color-mix(in srgb, var(--accent) 55%, transparent), transparent 60%),
     linear-gradient(145deg, #d9d9d9, #b8b8b8);
@@ -161,6 +180,17 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
+}
+
+/* 替换成真实图片时：<img class="work-card__media" src="..."> 会按 16:9 自身比例排布 */
+img.work-card__media,
+.work-card__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
 }
 
 .work-card__media::after {
@@ -329,6 +359,27 @@ a { color: inherit; text-decoration: none; }
   .nav__link { padding: 6px 12px; }
 }
 
+/* 淡入动画 */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.work-card {
+  animation: fadeIn .5s ease both;
+}
+.work-card:nth-child(1) { animation-delay: .05s; }
+.work-card:nth-child(2) { animation-delay: .15s; }
+.work-card:nth-child(3) { animation-delay: .25s; }
+.work-card:nth-child(4) { animation-delay: .35s; }
+
+.quote        { animation: fadeUp .5s ease both; }
+.timeline__item { animation: fadeUp .5s ease both; }
+
 @media (prefers-reduced-motion: reduce) {
-  * { scroll-behavior: auto !important; }
+  * { scroll-behavior: auto !important; animation: none !important; }
 }

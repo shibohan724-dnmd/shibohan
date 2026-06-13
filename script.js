@@ -28,7 +28,7 @@ window.addEventListener("resize", () => {
 });
 
 // 滚动高亮当前区块对应的导航
-const sections = ["home", "work", "about"]
+const sections = ["home", "about"]
   .map((id) => document.getElementById(id))
   .filter(Boolean);
 const navLinks = document.querySelectorAll(".nav__link[data-target]");
@@ -49,30 +49,4 @@ const observer = new IntersectionObserver(
 
 sections.forEach((s) => observer.observe(s));
 
-// 作品卡片进入视口时淡入
-const cards = document.querySelectorAll(".work-card, .quote, .timeline__item");
-const reveal = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        if (!entry.target.classList.contains("work-card")) {
-          entry.target.style.transform = "translateY(0)";
-        }
-        reveal.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
-
-cards.forEach((c) => {
-  const isCard = c.classList.contains("work-card");
-  c.style.opacity = "0";
-  // 作品卡片有 hover 位移效果，这里只做淡入，避免覆盖 :hover 的 transform
-  if (!isCard) c.style.transform = "translateY(16px)";
-  c.style.transition = isCard
-    ? "opacity .5s ease"
-    : "opacity .5s ease, transform .5s ease";
-  reveal.observe(c);
-});
+// 淡入由 CSS animation 控制（见 styles.css），JS 无需处理

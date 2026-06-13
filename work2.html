@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XXXX Coffee 在线点单小程序 · 案例 · 施博瀚</title>
+  <meta name="description" content="从 0 到 1 设计一款咖啡商家在线点单小程序：点单链路、会员体系、品牌表达与节气营销的完整案例。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="case.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="topbar__back" href="index.html">← 返回作品集</a>
+    <span class="topbar__name">施博瀚 · Portfolio</span>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="hero__tag">☕ 0 → 1 · 小程序设计</span>
+      <h1 class="hero__title">XXXX Coffee<br />在线点单小程序</h1>
+      <p class="hero__sub">
+        为一家精品咖啡品牌从 0 到 1 设计的微信小程序：覆盖「找门店 → 点单 → 取餐 → 复购」的完整链路，
+        并通过会员积分、节气营销与环保主张，把一次性的买咖啡，做成可持续的品牌关系。
+      </p>
+
+      <dl class="hero__meta">
+        <div><dt>我的角色</dt><dd>主设计师（UX/UI）</dd></div>
+        <div><dt>项目周期</dt><dd>2025 · 约 10 周</dd></div>
+        <div><dt>平台</dt><dd>微信小程序 · iOS / Android</dd></div>
+        <div><dt>负责范围</dt><dd>调研 · 信息架构 · 交互 · 视觉 · 设计规范</dd></div>
+        <div><dt>工具</dt><dd>Figma · Rive · 即梦</dd></div>
+      </dl>
+
+      <div class="hero__cover">
+        <img src="assets/work2-coffeeapp.png?v=4" alt="XXXX Coffee 小程序封面" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 概述 -->
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Overview</span>
+      <h2>项目背景</h2>
+      <p class="lead">
+        客户是一家定位「让咖啡成为生活的一部分」的本地精品咖啡品牌，已有数家直营门店，
+        但线上点单依赖第三方平台，抽佣高、无法沉淀会员、品牌感被稀释。
+        他们希望拥有一个<strong>自有的点单入口</strong>，既能高效完成交易，又能讲好品牌故事、留住复购用户。
+      </p>
+      <div class="facts">
+        <div class="fact"><div class="fact__num">4 Tab</div><div class="fact__label">首页 / 点单 / 订单 / 我的</div></div>
+        <div class="fact"><div class="fact__num">30+</div><div class="fact__label">完整设计页面</div></div>
+        <div class="fact"><div class="fact__num">3 大</div><div class="fact__label">核心系统：点单 · 会员 · 品牌</div></div>
+        <div class="fact"><div class="fact__num">1 套</div><div class="fact__label">可复用设计规范</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 挑战 -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <span class="eyebrow">Challenge</span>
+      <h2>挑战与目标</h2>
+      <p class="lead">在「交易效率」和「品牌温度」之间找到平衡——既要让用户 30 秒下完单，又要让他们记住这个品牌。</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card__icon">⚡</div>
+          <h3>点单要快</h3>
+          <p>咖啡是高频、即时的消费场景，用户常常在通勤路上下单。下单路径必须短、决策成本低、随时可改规格。</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">🔁</div>
+          <h3>复购要黏</h3>
+          <p>脱离第三方平台后，如何靠会员积分、优惠券和「再来一单」把一次性顾客变成回头客。</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">🎨</div>
+          <h3>品牌要立</h3>
+          <p>在功能型小程序里植入品牌主张（环保、节气文化），让用户感知到「这不只是一个点单工具」。</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">🏬</div>
+          <h3>多门店要清</h3>
+          <p>多家门店、不同营业时间与库存，用户需要快速选对最近、在营业的门店，避免下错单。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 用户研究 -->
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Research</span>
+      <h2>用户与痛点</h2>
+      <p class="lead">通过门店观察与 8 位常客访谈，提炼出两类核心用户，他们的诉求决定了设计的优先级。</p>
+      <div class="personas">
+        <div class="persona">
+          <div class="persona__top">
+            <div class="persona__avatar">🧑‍💻</div>
+            <div><div class="persona__name">通勤白领 · 小施</div><div class="persona__role">每天 1 杯，追求效率</div></div>
+          </div>
+          <ul>
+            <li>希望预点单到店即取，不排队</li>
+            <li>常点固定几款，想快速「再来一单」</li>
+            <li>在意积分与优惠，但不愿花时间研究规则</li>
+          </ul>
+        </div>
+        <div class="persona">
+          <div class="persona__top">
+            <div class="persona__avatar">🌿</div>
+            <div><div class="persona__name">品质生活客 · 阿绿</div><div class="persona__role">周末探店，重视体验</div></div>
+          </div>
+          <ul>
+            <li>喜欢尝鲜季节限定与新品</li>
+            <li>认同环保理念，愿意自带杯</li>
+            <li>会因为「好看 / 有故事」而分享传播</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 信息架构 / 流程 -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <span class="eyebrow">Information Architecture</span>
+      <h2>核心点单流程</h2>
+      <p class="lead">把整条链路压缩为 4 步，每一步都尽量减少跳转与决策负担。</p>
+      <div class="flow">
+        <div class="flow__step"><span>01</span><h4>选门店</h4><p>定位推荐最近 / 在营业门店，地图 + 列表双视图。</p></div>
+        <div class="flow__step"><span>02</span><h4>挑饮品</h4><p>左侧分类锚点 + 右侧商品流，弹窗选规格直接加购。</p></div>
+        <div class="flow__step"><span>03</span><h4>下单付款</h4><p>购物车常驻底部，价格实时累计，一键结算。</p></div>
+        <div class="flow__step"><span>04</span><h4>取餐复购</h4><p>取餐码醒目展示，「再来一单」促进复购。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 设计规范 -->
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Design System</span>
+      <h2>设计规范</h2>
+      <p class="lead">一套围绕「咖啡红 + 自然色」展开的视觉语言，保证 30+ 页面的一致性与可扩展性。</p>
+
+      <div class="specs">
+        <!-- 颜色 -->
+        <div class="spec-block">
+          <h3>色彩系统</h3>
+          <div class="swatches">
+            <div class="swatch"><div class="swatch__chip" style="background:#be3a34"></div><div class="swatch__info"><div class="swatch__name">品牌红</div><div class="swatch__hex">#BE3A34</div></div></div>
+            <div class="swatch"><div class="swatch__chip" style="background:#8fae60"></div><div class="swatch__info"><div class="swatch__name">抹茶绿</div><div class="swatch__hex">#8FAE60</div></div></div>
+            <div class="swatch"><div class="swatch__chip" style="background:#f4efe6"></div><div class="swatch__info"><div class="swatch__name">奶咖米</div><div class="swatch__hex">#F4EFE6</div></div></div>
+            <div class="swatch"><div class="swatch__chip" style="background:#3e2c23"></div><div class="swatch__info"><div class="swatch__name">深可可</div><div class="swatch__hex">#3E2C23</div></div></div>
+            <div class="swatch"><div class="swatch__chip" style="background:#8c8c8c"></div><div class="swatch__info"><div class="swatch__name">中性灰</div><div class="swatch__hex">#8C8C8C</div></div></div>
+          </div>
+          <p style="font-size:13px;color:var(--text-dim);margin-top:18px">
+            品牌红用于价格、CTA 与选中态，强化「行动点」；抹茶绿承载节气与环保信息；米色与可可色营造温暖的咖啡气质。
+          </p>
+        </div>
+
+        <!-- 字体 -->
+        <div class="spec-block">
+          <h3>文字层级</h3>
+          <div class="type-row"><span class="tname">页面标题 20</span><span class="type-h1">想对你说</span></div>
+          <div class="type-row"><span class="tname">区块标题 18</span><span class="type-h2">西西里美式</span></div>
+          <div class="type-row"><span class="tname">正文 14</span><span class="type-body">清新柠檬风味跳跃，轻盈气泡层层涌起。</span></div>
+          <div class="type-row"><span class="tname">辅助 12</span><span class="type-cap">门店距离您约 248m · 营业中</span></div>
+          <p style="font-size:13px;color:var(--text-dim);margin-top:16px">中文使用苹方（PingFang SC），数字与英文搭配 SF Pro，保证价格、距离等信息清晰易读。</p>
+        </div>
+
+        <!-- 组件 -->
+        <div class="spec-block">
+          <h3>核心组件</h3>
+          <div class="ui-demos">
+            <button class="btn-pill">¥20 加入购物车</button>
+            <button class="btn-outline">再来一单</button>
+            <span class="tag-spec">超大冰杯 473ml</span>
+            <span class="tag-eco">♻ 自带杯减 5 元</span>
+          </div>
+          <div class="tokens" style="margin-top:20px">
+            <span class="token">圆角 12 / 999px</span>
+            <span class="token">8pt 间距栅格</span>
+            <span class="token">卡片投影 0 2 8</span>
+            <span class="token">主按钮：胶囊 + 品牌红</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心页面：点单 -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <span class="eyebrow">Key Screens</span>
+      <h2>点单链路</h2>
+      <p class="lead">从浏览菜单到拿到取餐码，全程保持「价格可见、规格可改、随时回退」。</p>
+      <div class="shots">
+        <figure class="shot"><div class="shot__frame"><img src="assets/case2/17.png" alt="首页菜单" /></div><figcaption class="shot__cap">① 菜单页：分类锚点 + 商品流</figcaption></figure>
+        <figure class="shot"><div class="shot__frame"><img src="assets/case2/12.png" alt="商品详情" /></div><figcaption class="shot__cap">② 规格弹窗：杯型温度一目了然</figcaption></figure>
+        <figure class="shot"><div class="shot__frame"><img src="assets/case2/21.png" alt="购物车" /></div><figcaption class="shot__cap">③ 常驻购物车：实时累计金额</figcaption></figure>
+        <figure class="shot"><div class="shot__frame"><img src="assets/case2/11.png" alt="取餐码" /></div><figcaption class="shot__cap">④ 取餐码：醒目 + 一键再来一单</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 亮点1：会员体系 -->
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Highlight 01</span>
+      <h2>会员体系：把交易沉淀为关系</h2>
+
+      <div class="feature">
+        <div class="feature__media">
+          <div class="shot__frame"><img src="assets/case2/16.png" alt="会员中心" /></div>
+          <div class="shot__frame"><img src="assets/case2/08.png" alt="积分商城" /></div>
+        </div>
+        <div class="feature__text">
+          <h3>积分 → 商城 → 复购的闭环</h3>
+          <p>每消费 5 元积 1 分，积分可在积分商城兑换品牌周边（吸管杯、保温杯等），形成「喝得越多、越想留下」的正循环。</p>
+          <ul class="feature__list">
+            <li>会员中心一屏聚合积分、优惠券、礼品</li>
+            <li>会员码 30 秒刷新，线下消费也能积分</li>
+            <li>积分明细透明可查，降低客服压力</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="shots" style="margin-top:32px">
+        <figure class="shot"><div class="shot__frame"><img src="assets/case2/14.png" alt="会员码" /></div><figcaption class="shot__cap">会员码：线下扫码积分</figcaption></figure>
+        <figure class="shot"><div class="shot__frame"><img src="assets/case2/01.png" alt="积分明细" /></div><figcaption class="shot__cap">积分明细：来源清晰</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 亮点2：品牌表达 -->
+  <section class="section section--alt">
+    <div class="wrap">
+      <span class="eyebrow">Highlight 02</span>
+      <h2>品牌表达：不止是点单工具</h2>
+
+      <div class="feature">
+        <div class="feature__media">
+          <div class="shot__frame"><img src="assets/case2/20.png" alt="立春节气页" /></div>
+          <div class="shot__frame"><img src="assets/case2/22.png" alt="节气海报" /></div>
+        </div>
+        <div class="feature__text">
+          <h3>节气营销 × 环保主张</h3>
+          <p>结合二十四节气推出限定视觉与饮品（如「立春 · 抹茶奶绿」），把品牌的文化感融入日常点单，制造期待与传播点。</p>
+          <ul class="feature__list">
+            <li>节气主题页 + 海报，强化品牌调性</li>
+            <li>「自带杯减 5 元」把环保变成可参与的行动</li>
+            <li>品牌故事页传递「咖啡成为生活的一部分」</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="shots" style="margin-top:32px">
+        <figure class="shot"><div class="shot__frame"><img src="assets/case2/03.png" alt="品牌故事" /></div><figcaption class="shot__cap">品牌故事：概念 · 环保 · 直营</figcaption></figure>
+        <figure class="shot"><div class="shot__frame"><img src="assets/case2/13.png" alt="门店选择" /></div><figcaption class="shot__cap">门店选择：地图 + 距离 + 营业状态</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 成果 -->
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow">Outcome</span>
+      <h2>成果与反思</h2>
+      <div class="results">
+        <div class="result"><div class="result__num">−30s</div><div class="result__label">平均下单耗时缩短</div></div>
+        <div class="result"><div class="result__num">3 步</div><div class="result__label">最短点单路径</div></div>
+        <div class="result"><div class="result__num">100%</div><div class="result__label">页面遵循统一规范</div></div>
+        <div class="result"><div class="result__num">+复购</div><div class="result__label">积分闭环驱动回头率</div></div>
+      </div>
+      <div class="reflection">
+        <p><strong>做对了什么：</strong>把「点单效率」作为第一优先级，常驻购物车与规格弹窗大幅减少跳转；同时用一套设计规范让品牌、会员、交易三个系统视觉统一。</p>
+        <p><strong>如果重来：</strong>会更早建立组件库与变量（Design Tokens），让节气换肤、门店主题色等扩展更低成本；也会补充更系统的可用性测试来验证下单转化。</p>
+        <p><strong>收获：</strong>这是一次完整的 0→1 实战——从理解商业目标，到落地为可交付的界面与规范，让我对「设计如何服务业务」有了更具体的理解。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="case-footer">
+    <div class="wrap">
+      <p>对这个项目感兴趣，或想聊聊合作？</p>
+      <a class="btn-pill" href="mailto:hello@shibohan.xyz">给我发邮件 →</a>
+      <p style="margin-top:24px"><a class="topbar__back" href="index.html">← 返回作品集首页</a></p>
+      <p class="copy">© 2026 施博瀚 · XXXX Coffee 在线点单小程序案例</p>
+    </div>
+  </footer>
+</body>
+</html>
