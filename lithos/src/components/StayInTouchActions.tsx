@@ -69,20 +69,15 @@ export function StayInTouchActions() {
         <div
           className="fixed z-[100] pointer-events-none"
           style={{
-            left: Math.min(pointer.x + 16, window.innerWidth - 220),
-            top: Math.max(pointer.y - 280, 12),
+            left: Math.min(pointer.x + 16, window.innerWidth - 248),
+            top: Math.max(pointer.y - 320, 12),
           }}
         >
-          <div
-            className="rounded-2xl border border-white/15 bg-[#111] shadow-2xl shadow-black/60 p-3"
-            style={{ width: 200 }}
-          >
-            <img
-              src={WECHAT_QR_SRC}
-              alt={f.wechatQrAlt}
-              className="w-full h-auto rounded-xl bg-white"
-            />
-          </div>
+          <img
+            src={WECHAT_QR_SRC}
+            alt={f.wechatQrAlt}
+            className="w-[232px] h-auto rounded-2xl shadow-2xl shadow-black/50 border border-white/10"
+          />
         </div>
       )}
     </div>
