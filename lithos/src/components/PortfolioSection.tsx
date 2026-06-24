@@ -21,7 +21,7 @@ export function PortfolioSection() {
           />
         </ScrollReveal>
 
-        <div className="border-t border-white/10 max-w-[900px]">
+        <div className="border-t border-white/10">
           {t.portfolio.works.map((work, i) => {
             const link = WORK_LINKS[i]
             const imageFirst = i % 2 === 1
@@ -82,42 +82,38 @@ function WorkRow({
   linked: boolean
   imageFirst: boolean
 }) {
-  const textPad = imageFirst
-    ? 'md:pl-5 lg:pl-8 md:pr-6 lg:pr-10'
-    : 'md:pl-6 lg:pl-10 md:pr-4'
-
   const textCol = (
     <div
-      className={`flex flex-col min-h-full ${textPad} ${
-        imageFirst ? 'md:order-2' : 'md:order-1'
+      className={`flex flex-col min-h-full ${
+        imageFirst ? 'md:order-2 md:pl-3 lg:pl-5' : 'md:order-1 md:pr-3 lg:pr-5'
       }`}
     >
-      <h3 className="text-white text-xl md:text-[22px] font-medium leading-snug tracking-[-0.02em] group-hover:text-[#e8702a] transition-colors">
+      <h3 className="text-white text-2xl md:text-[26px] font-medium leading-tight tracking-[-0.02em] group-hover:text-[#e8702a] transition-colors">
         {title}
       </h3>
-      <p className="mt-2.5 text-[13px] md:text-sm text-white/55 leading-[1.65] max-w-[280px] md:max-w-xs">
+      <p className="mt-3 text-sm md:text-[15px] text-white/55 leading-[1.7] max-w-md">
         {desc}
       </p>
-      <ul className="mt-3 flex flex-wrap gap-1.5">
+      <ul className="mt-4 flex flex-wrap gap-2">
         {tags.map((tag) => (
           <li
             key={tag}
-            className="px-2.5 py-0.5 text-[10px] md:text-[11px] text-white/65 border border-white/25 rounded-sm tracking-wide"
+            className="px-3 py-1 text-[11px] md:text-xs text-white/65 border border-white/25 rounded-sm tracking-wide"
           >
             {tag}
           </li>
         ))}
       </ul>
       {soon && (
-        <span className="mt-3 inline-block text-[11px] text-white/40 border border-white/15 rounded-full px-2.5 py-0.5">
+        <span className="mt-4 inline-block text-xs text-white/40 border border-white/15 rounded-full px-3 py-1">
           {soonLabel}
         </span>
       )}
       {linked && !soon && (
-        <span className="mt-3 inline-flex items-center gap-1 text-[13px] text-white/45 group-hover:text-[#e8702a] transition-colors">
+        <span className="mt-4 inline-flex items-center gap-1.5 text-sm text-white/45 group-hover:text-[#e8702a] transition-colors">
           {viewCase}
           <ArrowUpRight
-            size={14}
+            size={15}
             className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
           />
         </span>
@@ -127,18 +123,20 @@ function WorkRow({
 
   const imageCol = (
     <div
-      className={`relative h-[150px] sm:h-[170px] md:h-[190px] overflow-hidden rounded-lg md:rounded-xl leading-[0] ${
-        imageFirst ? 'md:order-1' : 'md:order-2'
+      className={`flex items-start leading-[0] ${
+        imageFirst ? 'md:order-1 md:justify-end' : 'md:order-2 md:justify-start'
       }`}
     >
       {image ? (
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover object-center block group-hover:scale-[1.02] transition-transform duration-500"
+          className="w-[80%] max-w-full h-auto rounded-xl md:rounded-2xl block group-hover:scale-[1.02] transition-transform duration-500"
         />
       ) : (
-        <div className="w-full h-full flex items-center justify-center bg-white/[0.02]">
+        <div
+          className="w-[80%] aspect-[16/10] flex items-center justify-center bg-white/[0.02] rounded-xl"
+        >
           <span className="text-white/20 text-sm font-medium leading-normal">{title}</span>
         </div>
       )}
@@ -147,8 +145,8 @@ function WorkRow({
 
   return (
     <div
-      className={`grid md:grid-cols-[minmax(0,0.34fr)_minmax(0,0.66fr)] gap-5 md:gap-6 items-center py-5 md:py-6 ${
-        imageFirst ? 'md:grid-cols-[minmax(0,0.66fr)_minmax(0,0.34fr)]' : ''
+      className={`grid md:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)] gap-6 md:gap-8 lg:gap-10 items-start py-8 md:py-10 lg:py-12 ${
+        imageFirst ? 'md:grid-cols-[minmax(0,0.64fr)_minmax(0,0.36fr)]' : ''
       }`}
     >
       {textCol}
