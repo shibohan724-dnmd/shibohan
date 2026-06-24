@@ -1,6 +1,6 @@
 import { useLocale } from '../context/LocaleContext'
 import { PROFILE_EMAIL, PROFILE_PHONE, PROFILE_WECHAT } from '../data/content'
-import { NewsletterForm } from './NewsletterForm'
+import { StayInTouchActions } from './StayInTouchActions'
 
 const LOGO_SRC = '/assets/logo-shibohan-white.png'
 
@@ -79,7 +79,7 @@ export function Footer() {
 
           <div className="flex flex-col items-start">
             <h3 className={COLUMN_HEAD_CLASS}>{f.newsletterTitle}</h3>
-            <NewsletterForm />
+            <StayInTouchActions />
           </div>
         </div>
       </div>
