@@ -98,7 +98,7 @@ export function HeroSection() {
           {t.hero.scroll}
         </p>
         <a
-          href="#profile"
+          href="#works"
           className="bg-[#e8702a]/55 hover:bg-[#e8702a]/70 text-white/95 text-xs font-medium px-5 py-2 rounded-full border border-[#e8702a]/30 transition-colors active:scale-[0.98]"
         >
           {t.hero.cta}

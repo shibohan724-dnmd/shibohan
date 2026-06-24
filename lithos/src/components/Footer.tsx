@@ -6,9 +6,9 @@ const LOGO_SRC = '/assets/logo-shibohan-white.png'
 
 const NAV_LINKS = [
   { key: 'navHome', href: '#hero' },
-  { key: 'navAbout', href: '#profile' },
   { key: 'navPortfolio', href: '#works' },
   { key: 'navAiIp', href: '#ai-ip' },
+  { key: 'navAbout', href: '#profile' },
   { key: 'navExperience', href: '#experience' },
 ] as const
 

@@ -16,10 +16,10 @@ function AppContent() {
       }`}
     >
       <HeroSection />
-      <ProfileSection />
-      <ExperienceSection />
       <PortfolioSection />
       <AiIpSection />
+      <ProfileSection />
+      <ExperienceSection />
       <Footer />
     </div>
   )
