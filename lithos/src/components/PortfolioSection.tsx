@@ -84,9 +84,7 @@ function WorkRow({
 }) {
   const textCol = (
     <div
-      className={`flex flex-col min-h-full ${
-        imageFirst ? 'md:order-2 md:pl-3 lg:pl-5' : 'md:order-1 md:pr-3 lg:pr-5'
-      }`}
+      className={`flex flex-col min-h-full ${imageFirst ? 'md:order-2' : 'md:order-1'}`}
     >
       <h3 className="text-white text-2xl md:text-[26px] font-medium leading-tight tracking-[-0.02em] group-hover:text-[#e8702a] transition-colors">
         {title}
@@ -123,20 +121,18 @@ function WorkRow({
 
   const imageCol = (
     <div
-      className={`flex items-start leading-[0] ${
-        imageFirst ? 'md:order-1 md:justify-end' : 'md:order-2 md:justify-start'
+      className={`relative aspect-[16/10] overflow-hidden rounded-xl md:rounded-2xl leading-[0] ${
+        imageFirst ? 'md:order-1' : 'md:order-2'
       }`}
     >
       {image ? (
         <img
           src={image}
           alt={title}
-          className="w-[80%] max-w-full h-auto rounded-xl md:rounded-2xl block group-hover:scale-[1.02] transition-transform duration-500"
+          className="w-full h-full object-cover object-center block group-hover:scale-[1.02] transition-transform duration-500"
         />
       ) : (
-        <div
-          className="w-[80%] aspect-[16/10] flex items-center justify-center bg-white/[0.02] rounded-xl"
-        >
+        <div className="w-full h-full flex items-center justify-center bg-white/[0.02]">
           <span className="text-white/20 text-sm font-medium leading-normal">{title}</span>
         </div>
       )}
@@ -145,7 +141,7 @@ function WorkRow({
 
   return (
     <div
-      className={`grid md:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)] gap-6 md:gap-8 lg:gap-10 items-start py-8 md:py-10 lg:py-12 ${
+      className={`grid md:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)] gap-6 md:gap-8 lg:gap-10 items-start py-6 md:py-8 ${
         imageFirst ? 'md:grid-cols-[minmax(0,0.64fr)_minmax(0,0.36fr)]' : ''
       }`}
     >
