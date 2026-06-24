@@ -1,6 +1,6 @@
-import { Send } from 'lucide-react'
 import { useLocale } from '../context/LocaleContext'
 import { PROFILE_EMAIL, PROFILE_PHONE, PROFILE_WECHAT } from '../data/content'
+import { NewsletterForm } from './NewsletterForm'
 
 const LOGO_SRC = '/assets/logo-shibohan-white.png'
 
@@ -79,30 +79,7 @@ export function Footer() {
 
           <div className="flex flex-col items-start">
             <h3 className={COLUMN_HEAD_CLASS}>{f.newsletterTitle}</h3>
-            <form
-              className="w-full max-w-[260px] flex items-center rounded-full border border-white/15 bg-white/[0.04] pl-4 pr-1 py-1"
-              onSubmit={(e) => {
-                e.preventDefault()
-                const fd = new FormData(e.currentTarget)
-                const email = String(fd.get('email') || '').trim()
-                const body = email ? `来自页脚联系：${email}` : ''
-                window.location.href = `mailto:${PROFILE_EMAIL}?subject=Portfolio contact&body=${encodeURIComponent(body)}`
-              }}
-            >
-              <input
-                name="email"
-                type="email"
-                placeholder={f.emailPlaceholder}
-                className="flex-1 min-w-0 bg-transparent text-sm text-white/70 placeholder:text-white/30 outline-none"
-              />
-              <button
-                type="submit"
-                className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/15 text-white/70 hover:text-white transition-colors shrink-0"
-                aria-label={f.send}
-              >
-                <Send size={16} />
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
       </div>
