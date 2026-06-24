@@ -48,10 +48,26 @@ export const translations = {
       viewCase: '查看案例',
       soon: '筹备中',
       works: [
-        { title: 'knowee 在线课程平台', tag: 'B+C 端 · UI/UX · 2025' },
-        { title: 'XXXX Coffee 点单小程序', tag: '微信小程序 · UI 设计 · 2025' },
-        { title: 'KOVA Coffee 品牌官网', tag: '品牌官网 · 电商页面 · 2026' },
-        { title: '秉坤订货平台 B 端', tag: '后台 UI · 企业系统 · 2024' },
+        {
+          title: 'knowee 在线课程平台',
+          desc: '面向讲师与学员的在线课程平台，覆盖学习、授课、运营等 B+C 端核心流程，强调清晰的信息架构与一致的设计语言。',
+          tags: ['B+C 端', 'UI/UX', '2025'],
+        },
+        {
+          title: 'XXXX Coffee 点单小程序',
+          desc: '咖啡门店点单微信小程序，聚焦选品、规格、支付与订单状态，在有限屏效下保持操作路径短、反馈明确。',
+          tags: ['微信小程序', 'UI 设计', '2025'],
+        },
+        {
+          title: 'KOVA Coffee 品牌官网',
+          desc: '冷萃咖啡机品牌官网与电商页面，从品牌叙事、产品展示到订阅复购，构建完整的线上购买与会员体验。',
+          tags: ['品牌官网', '电商页面', '2026'],
+        },
+        {
+          title: '秉坤订货平台 B 端',
+          desc: '快消连锁品牌订货管理后台，涵盖经营看板、订单处理、长表单与企业级组件规范，兼顾复杂业务与操作效率。',
+          tags: ['后台 UI', '企业系统', '2024'],
+        },
       ],
     },
     aiIp: {
@@ -167,10 +183,26 @@ export const translations = {
       viewCase: 'View case',
       soon: 'Coming soon',
       works: [
-        { title: 'knowee Course Platform', tag: 'B+C · UI/UX · 2025' },
-        { title: 'XXXX Coffee Mini Program', tag: 'WeChat · UI Design · 2025' },
-        { title: 'KOVA Coffee Website', tag: 'Brand site · E-commerce · 2026' },
-        { title: 'Pekon B-side Admin', tag: 'Admin UI · Enterprise · 2024' },
+        {
+          title: 'knowee Course Platform',
+          desc: 'Online course platform for instructors and learners—B+C flows for learning, teaching, and ops with clear IA and a unified UI system.',
+          tags: ['B+C', 'UI/UX', '2025'],
+        },
+        {
+          title: 'XXXX Coffee Mini Program',
+          desc: 'WeChat mini program for café ordering—product pick, specs, payment, and order status with short paths and clear feedback.',
+          tags: ['WeChat Mini Program', 'UI Design', '2025'],
+        },
+        {
+          title: 'KOVA Coffee Website',
+          desc: 'Brand site and e-commerce for a cold-brew coffee brand—from storytelling and PDP to subscription and member experience.',
+          tags: ['Brand Site', 'E-commerce', '2026'],
+        },
+        {
+          title: 'Pekon B-side Admin',
+          desc: 'Ordering admin for FMCG chains—dashboards, order flows, long forms, and enterprise components for dense B-side work.',
+          tags: ['Admin UI', 'Enterprise', '2024'],
+        },
       ],
     },
     aiIp: {
