@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>knowee 在线课程平台 B+C 端 · 案例 · 施博瀚</title>
+  <meta name="description" content="从 0 到 1 设计 knowee 在线课程平台：B 端创作发布、C 端学习闭环、设计规范与交互组件库。" />
+  <script>
+    try {
+      var l = localStorage.getItem('lithos-locale');
+      document.documentElement.classList.add(l === 'zh' ? 'locale-zh' : 'locale-en');
+    } catch (e) {
+      document.documentElement.classList.add('locale-en');
+    }
+  </script>
+  <link rel="stylesheet" href="case.css" />
+</head>
+<body data-case-page="work1">
+  <header class="case-nav">
+    <a href="/" class="case-nav__logo">
+      <img src="/assets/logo-shibohan-white.png" alt="施博瀚" />
+    </a>
+    <div class="case-nav__right">
+      <a href="/" class="case-nav__back" data-i18n="nav.back">← 返回作品集</a>
+      <div id="localeToggle"></div>
+    </div>
+  </header>
+
+  <header class="case-hero">
+    <div class="case-wrap case-hero__inner">
+      <span class="case-hero__tag" data-i18n="hero.tag">0 → 1 · B+C 端 UI/UX</span>
+      <h1 class="case-hero__title" data-i18n="hero.title" data-i18n-html>knowee<br />在线课程平台</h1>
+      <p class="case-hero__sub" data-i18n="hero.sub">
+        面向教育机构与独立讲师的在线课程平台——B 端创作发布与数据分析，C 端发现、购买、学习、复习的完整体验设计。
+      </p>
+
+      <dl class="case-hero__meta">
+        <div><dt data-i18n="meta.role">我的角色</dt><dd data-i18n="meta.roleVal">主设计师（UX / UI / 设计规范）</dd></div>
+        <div><dt data-i18n="meta.period">项目周期</dt><dd data-i18n="meta.periodVal">2025 · 约 12 周</dd></div>
+        <div><dt data-i18n="meta.platform">平台</dt><dd data-i18n="meta.platformVal">Web 响应式 · 桌面优先</dd></div>
+        <div><dt data-i18n="meta.scope">负责范围</dt><dd data-i18n="meta.scopeVal">信息架构 · 交互 · 视觉 · 组件库</dd></div>
+        <div><dt data-i18n="meta.tools">工具</dt><dd data-i18n="meta.toolsVal">Figma · FigJam · 即梦</dd></div>
+      </dl>
+
+      <div class="case-hero__mockup">
+        <img src="assets/case1/hero.jpg" data-i18n-alt="img.hero" alt="knowee 在线课程平台封面" />
+      </div>
+    </div>
+    <div class="case-hero__silhouette" aria-hidden="true"></div>
+  </header>
+
+  <section class="case-section">
+    <div class="case-wrap">
+      <span class="eyebrow-portal" data-i18n="eyebrow.overview">Overview</span>
+      <h2 data-i18n="overview.h2">KNOWEE</h2>
+
+      <div class="overview-panel">
+        <div class="overview-grid">
+          <article class="overview-item">
+            <div class="overview-item__head">
+              <span class="overview-item__icon" aria-hidden="true">01</span>
+              <h3 class="overview-item__title" data-i18n="overview.item1.title">项目背景</h3>
+            </div>
+            <p class="overview-item__body" data-i18n="overview.item1.body">KNOWEE 是一个面向教育机构与教师的在线课程平台。项目从 0 到 1 搭建课程交易与学习生态，支持教师端完成课程上传、分类、命名及定价管理，同时为学生端提供课程购买、在线学习及课程资源下载等完整服务流程。</p>
+          </article>
+          <article class="overview-item">
+            <div class="overview-item__head">
+              <span class="overview-item__icon" aria-hidden="true">02</span>
+              <h3 class="overview-item__title" data-i18n="overview.item2.title">核心难点</h3>
+            </div>
+            <p class="overview-item__body" data-i18n="overview.item2.body">传统在线课程平台大多以录播视频售卖为核心，用户购买后获得的是标准化、单向输出的学习内容，缺乏学习节奏管理与互动反馈机制。因此，本项目需要在课程内容高度标准化的前提下，提升学习过程的参与感与陪伴感，增强用户对学习进度、知识掌握情况及学习成果的感知，从而提高课程完成率与用户留存率。</p>
+          </article>
+        </div>
+
+        <div class="overview-panel__foot">
+          <span class="overview-panel__label" data-i18n="overview.panelLabel">项目概览</span>
+          <div class="facts facts--compact">
+            <div class="fact"><div class="fact__num">B + C</div><div class="fact__label" data-i18n="fact.dual.label">双端：创作发布 · 学习消费</div></div>
+            <div class="fact"><div class="fact__num">50+</div><div class="fact__label" data-i18n="fact.pages.label">页面与核心流程</div></div>
+            <div class="fact"><div class="fact__num">1 套</div><div class="fact__label" data-i18n="fact.system.label">统一设计规范 + 组件库</div></div>
+            <div class="fact"><div class="fact__num">4 步</div><div class="fact__label" data-i18n="fact.loop.label">学习闭环：学 · 练 · 记 · 复</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-wrap">
+      <span class="eyebrow-portal" data-i18n="eyebrow.challenges">Challenges</span>
+      <h2 data-i18n="challenges.h2">挑战与目标</h2>
+      <p class="lead" data-i18n="challenges.lead">B 端要高效创作与运营，C 端要沉浸学习——两端体验必须在同一套设计语言下各自最优。</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card__num">01</div>
+          <h3 data-i18n="challenges.card1.title">双端信息架构</h3>
+          <p data-i18n="challenges.card1.body">B 端创作 / 发布 / 数据，C 端发现 / 购买 / 学习 / 复习——链路长、角色多，导航必须清晰可扩展。</p>
+        </div>
+        <div class="card">
+          <div class="card__num">02</div>
+          <h3 data-i18n="challenges.card2.title">教育场景品牌化</h3>
+          <p data-i18n="challenges.card2.body">建立面向教育场景的色彩、字体、组件与间距规范，保证 50+ 页面视觉一致，降低协作与开发成本。</p>
+        </div>
+        <div class="card">
+          <div class="card__num">03</div>
+          <h3 data-i18n="challenges.card3.title">学习沉浸感</h3>
+          <p data-i18n="challenges.card3.body">用卡片式布局强化课程封面与内容的层级，减少视觉噪音，让用户专注在当前章节。</p>
+        </div>
+        <div class="card">
+          <div class="card__num">04</div>
+          <h3 data-i18n="challenges.card4.title">学习体验闭环</h3>
+          <p data-i18n="challenges.card4.body">章节导航支持碎片化学习；互动测验 + 语音笔记，形成「学 → 练 → 记 → 复」的完整循环。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-wrap">
+      <span class="eyebrow-portal" data-i18n="eyebrow.users">Users</span>
+      <h2 data-i18n="users.h2">目标用户与诉求</h2>
+      <p class="lead" data-i18n="users.lead">两类核心用户决定了 B 端与 C 端的设计优先级。</p>
+      <div class="personas">
+        <div class="persona">
+          <span class="persona__badge" data-i18n="users.b.badge">B 端</span>
+          <div class="persona__name" data-i18n="users.b.name">独立讲师 · Connie</div>
+          <div class="persona__role" data-i18n="users.b.role">创作与运营</div>
+          <ul>
+            <li data-i18n="users.b.li1">快速上传课件、设置分类与定价，一键发布</li>
+            <li data-i18n="users.b.li2">需要清晰的数据看板：浏览、销售、完课率、收入</li>
+            <li data-i18n="users.b.li3">希望 AI 辅助编辑，降低课件制作门槛</li>
+          </ul>
+        </div>
+        <div class="persona">
+          <span class="persona__badge" data-i18n="users.c.badge">C 端</span>
+          <div class="persona__name" data-i18n="users.c.name">职场学员 · Alex</div>
+          <div class="persona__role" data-i18n="users.c.role">学习消费</div>
+          <ul>
+            <li data-i18n="users.c.li1">碎片化时间学习，需要章节进度与断点续学</li>
+            <li data-i18n="users.c.li2">边学边记笔记，课后能快速复习重点</li>
+            <li data-i18n="users.c.li3">互动测验帮助检验掌握程度，而非只看视频</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-wrap">
+      <span class="eyebrow-portal" data-i18n="eyebrow.ia">Information Architecture</span>
+      <h2 data-i18n="ia.h2">双端核心链路</h2>
+      <p class="lead" data-i18n="ia.lead">B 端与 C 端共享同一套设计规范，但信息架构各自围绕核心任务展开。</p>
+      <div class="flow">
+        <div class="flow__step"><span>B-01</span><h4 data-i18n="ia.b01.title">创作编辑</h4><p data-i18n="ia.b01.body">课件上传、AI 辅助编辑、章节大纲与预览。</p></div>
+        <div class="flow__step"><span>B-02</span><h4 data-i18n="ia.b02.title">发布配置</h4><p data-i18n="ia.b02.body">分类、标签、权限、定价与发布审核。</p></div>
+        <div class="flow__step"><span>B-03</span><h4 data-i18n="ia.b03.title">数据运营</h4><p data-i18n="ia.b03.body">浏览、销售、完课率、收入等核心指标看板。</p></div>
+        <div class="flow__step"><span>C-01</span><h4 data-i18n="ia.c01.title">发现购买</h4><p data-i18n="ia.c01.body">推荐课程、分类筛选、详情页与支付。</p></div>
+        <div class="flow__step"><span>C-02</span><h4 data-i18n="ia.c02.title">沉浸学习</h4><p data-i18n="ia.c02.body">章节导航、视频 / 幻灯、随堂测验。</p></div>
+        <div class="flow__step"><span>C-03</span><h4 data-i18n="ia.c03.title">笔记复习</h4><p data-i18n="ia.c03.body">语音转文字笔记、历史记录与进度追踪。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-wrap case-wrap--narrow">
+      <span class="eyebrow-portal" data-i18n="eyebrow.decisions">Design Decisions</span>
+      <h2 data-i18n="decisions.h2">设计决策</h2>
+
+      <div class="decisions-panel">
+        <article class="decision-item">
+          <span class="decision-item__num" aria-hidden="true">01</span>
+          <div class="decision-item__content">
+            <h3 class="decision-item__title" data-i18n="decisions.item1.title">信息架构梳理</h3>
+            <p class="decision-item__body" data-i18n="decisions.item1.body">围绕用户完整路径（发现 → 购买 → 学习 → 复习）构建清晰的信息层级与导航体系，降低操作成本，让 B/C 双端各自聚焦核心任务。</p>
+          </div>
+        </article>
+        <article class="decision-item">
+          <span class="decision-item__num" aria-hidden="true">02</span>
+          <div class="decision-item__content">
+            <h3 class="decision-item__title" data-i18n="decisions.item2.title">建立品牌化设计体系</h3>
+            <p class="decision-item__body" data-i18n="decisions.item2.body">针对教育场景建立统一的色彩、字体、组件与间距规范，确保品牌调性一致，并为后续功能扩展提供可持续的设计基础。</p>
+          </div>
+        </article>
+        <article class="decision-item">
+          <span class="decision-item__num" aria-hidden="true">03</span>
+          <div class="decision-item__content">
+            <h3 class="decision-item__title" data-i18n="decisions.item3.title">营造沉浸式学习氛围</h3>
+            <p class="decision-item__body" data-i18n="decisions.item3.body">采用卡片式布局强化课程封面与内容的层级关系，减少视觉噪音，帮助用户聚焦当前学习内容。</p>
+          </div>
+        </article>
+        <article class="decision-item">
+          <span class="decision-item__num" aria-hidden="true">04</span>
+          <div class="decision-item__content">
+            <h3 class="decision-item__title" data-i18n="decisions.item4.title">优化学习体验闭环</h3>
+            <p class="decision-item__body" data-i18n="decisions.item4.body">引入章节导航支持碎片化学习，搭配互动问答模块，帮助用户检验掌握程度、发现知识盲区。</p>
+          </div>
+        </article>
+        <article class="decision-item">
+          <span class="decision-item__num" aria-hidden="true">05</span>
+          <div class="decision-item__content">
+            <h3 class="decision-item__title" data-i18n="decisions.item5.title">强化知识沉淀能力</h3>
+            <p class="decision-item__body" data-i18n="decisions.item5.body">侧边栏集成语音转文字笔记功能，支持边学边记，形成「学 → 记 → 复」的完整循环，提升长期留存。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-wrap">
+      <figure class="slides__item">
+        <img src="assets/case1/design-system.jpg" data-i18n-alt="img.designSystem" alt="01 统一设计规范 Unified Design Guidelines" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-wrap">
+      <figure class="slides__item">
+        <img src="assets/case1/components.jpg" data-i18n-alt="img.components" alt="02 交互组件 Interactive Components" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-wrap">
+      <figure class="slides__item">
+        <img src="assets/case1/screens-c.jpg" data-i18n-alt="img.screensC" alt="03 部分页面展示 Selected Screens" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-wrap">
+      <span class="eyebrow-portal" data-i18n="eyebrow.keyPagesB">Key Pages · B 端</span>
+      <h2 data-i18n="keyPagesB.h2">B 端核心页面</h2>
+      <p class="lead" data-i18n="keyPagesB.lead">讲师侧：数据看板、课件编辑与 AI 辅助，覆盖「做课 → 卖课 → 看数据」。</p>
+      <figure class="slides__item">
+        <img src="assets/case1/screens-b.jpg" data-i18n-alt="img.screensB" alt="B 端数据看板 · 课件编辑 · AI 助手" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-wrap">
+      <span class="eyebrow-portal" data-i18n="eyebrow.highlight">Highlight</span>
+      <h2 data-i18n="highlight.h2">沉浸式学习模式</h2>
+      <p class="lead" data-i18n="highlight.lead">Light / Dark 双模式，章节大纲 + 主内容 + 笔记侧栏 + 随堂测验。</p>
+      <figure class="slides__item">
+        <img src="assets/case1/learning.jpg" data-i18n-alt="img.learning" alt="学习模式 Light / Dark" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-wrap case-wrap--narrow">
+      <span class="eyebrow-portal" data-i18n="eyebrow.outcome">Outcome</span>
+      <h2 data-i18n="outcome.label">成果与反思</h2>
+      <div class="results">
+        <div class="result"><div class="result__num">B+C</div><div class="result__label" data-i18n="result.dual.label">双端完整体验链路</div></div>
+        <div class="result"><div class="result__num">50+</div><div class="result__label" data-i18n="result.pages.label">页面与核心流程设计</div></div>
+        <div class="result"><div class="result__num">1 套</div><div class="result__label" data-i18n="result.system.label">设计规范 + 组件库</div></div>
+      </div>
+
+      <div class="reflection">
+        <p data-i18n="outcome.reflect1" data-i18n-html><strong>做对了什么：</strong>先梳理 B/C 双端信息架构，再建立统一设计规范，避免「各做各的」；学习模式的三栏布局 + 笔记 + 测验，把「看完视频」升级为「真正学会」。</p>
+        <p data-i18n="outcome.reflect2" data-i18n-html><strong>如果重来：</strong>会更早引入 Design Tokens 与组件变量，让 Dark 模式、多语言等扩展更低成本；也会补充可用性测试，验证章节导航与笔记功能的学习效率提升。</p>
+        <p data-i18n="outcome.reflect3" data-i18n-html><strong>收获：</strong>这是一次完整的 B+C 端 0→1 实战——从理解教育场景的业务目标，到落地为可交付的界面、规范与组件库，让我对「设计如何同时服务创作者与学习者」有了更具体的理解。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="case-footer">
+    <div class="case-wrap">
+      <p data-i18n="footer.cta">对这个项目感兴趣，或想聊聊合作？</p>
+      <a class="btn-primary" href="mailto:13676118855@163.com" data-i18n="footer.email">给我发邮件 →</a>
+      <p style="margin-top:32px;"><a class="case-nav__back" href="/" data-i18n="nav.backHome">← 返回作品集首页</a></p>
+      <p class="copy" data-i18n="footer.copy">© 2026 施博瀚 · knowee 在线课程平台 B+C 端案例</p>
+    </div>
+  </footer>
+
+  <script src="i18n/common.js"></script>
+  <script src="i18n/work1.js"></script>
+  <script src="locale.js"></script>
+</body>
+</html>

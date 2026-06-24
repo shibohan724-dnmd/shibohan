@@ -1,0 +1,343 @@
+window.LithosCaseMeta = window.LithosCaseMeta || {};
+window.LithosCaseStrings = window.LithosCaseStrings || {};
+
+window.LithosCaseMeta.work2 = {
+  zh: {
+    title: 'XXXX Coffee 在线点单小程序 · 案例 · 施博瀚',
+    description:
+      '从 0 到 1 设计一款咖啡商家在线点单小程序：点单链路、会员体系、品牌表达与节气营销的完整案例。',
+  },
+  en: {
+    title: 'XXXX Coffee Ordering Mini Program · Case Study · Shibohan Shi',
+    description:
+      'A 0-to-1 coffee shop ordering mini program: ordering flow, membership, brand expression, and seasonal marketing in one case study.',
+  },
+};
+
+window.LithosCaseStrings.work2 = {
+  zh: {
+    'hero.tag': '☕ 0 → 1 · 小程序设计',
+    'hero.title': 'XXXX Coffee<br />在线点单小程序',
+    'hero.sub':
+      '为一家精品咖啡品牌从 0 到 1 设计的微信小程序：覆盖「找门店 → 点单 → 取餐 → 复购」的完整链路，并通过会员积分、节气营销与环保主张，把一次性的买咖啡，做成可持续的品牌关系。',
+    'meta.roleVal': 'UI/UX 设计师',
+    'meta.periodVal': '2025 · 约 10 周',
+    'meta.platformVal': '微信小程序 · iOS / Android',
+    'meta.scopeVal': '界面设计 · 交互 · 视觉 · 设计规范',
+    'meta.toolsVal': 'Figma · 即梦 · ChatGPT',
+    'hero.coverAlt': 'XXXX Coffee 小程序封面',
+
+    'overview.eyebrow': 'Overview',
+    'overview.title': '项目背景',
+    'overview.lead':
+      '客户是一家定位「让咖啡成为生活的一部分」的本地精品咖啡品牌，已有数家直营门店，但线上点单依赖第三方平台，抽佣高、无法沉淀会员、品牌感被稀释。他们希望拥有一个<strong>自有的点单入口</strong>，既能高效完成交易，又能讲好品牌故事、留住复购用户。',
+    'facts.1.num': '4 Tab',
+    'facts.1.label': '首页 / 点单 / 订单 / 我的',
+    'facts.2.num': '30+',
+    'facts.2.label': '完整设计页面',
+    'facts.3.num': '3 大',
+    'facts.3.label': '核心系统：点单 · 会员 · 品牌',
+    'facts.4.num': '1 套',
+    'facts.4.label': '可复用设计规范',
+
+    'challenge.eyebrow': 'Challenge',
+    'challenge.title': '挑战与目标',
+    'challenge.lead':
+      '在「交易效率」和「品牌温度」之间找到平衡——既要让用户 30 秒下完单，又要让他们记住这个品牌。',
+    'cards.1.title': '点单要快',
+    'cards.1.body':
+      '咖啡是高频、即时的消费场景，用户常常在通勤路上下单。下单路径必须短、决策成本低、随时可改规格。',
+    'cards.2.title': '复购要黏',
+    'cards.2.body':
+      '脱离第三方平台后，如何靠会员积分、优惠券和「再来一单」把一次性顾客变成回头客。',
+    'cards.3.title': '品牌要立',
+    'cards.3.body':
+      '在功能型小程序里植入品牌主张（环保、节气文化），让用户感知到「这不只是一个点单工具」。',
+    'cards.4.title': '多门店要清',
+    'cards.4.body':
+      '多家门店、不同营业时间与库存，用户需要快速选对最近、在营业的门店，避免下错单。',
+
+    'research.eyebrow': 'Research',
+    'research.title': '用户与痛点',
+    'research.lead':
+      '结合门店观察与简单用户访谈，梳理两类典型用户的使用场景与痛点。',
+    'persona.1.name': '通勤白领 · 小施',
+    'persona.1.role': '每天 1 杯，追求效率',
+    'persona.1.1': '希望预点单到店即取，不排队',
+    'persona.1.2': '常点固定几款，想快速「再来一单」',
+    'persona.1.3': '在意积分与优惠，但不愿花时间研究规则',
+    'persona.2.name': '品质生活客 · 阿绿',
+    'persona.2.role': '周末探店，重视体验',
+    'persona.2.1': '喜欢尝鲜季节限定与新品',
+    'persona.2.2': '认同环保理念，愿意自带杯',
+    'persona.2.3': '会因为「好看 / 有故事」而分享传播',
+
+    'ia.eyebrow': 'Information Architecture',
+    'ia.title': '核心点单流程',
+    'ia.lead': '把整条链路压缩为 4 步，每一步都尽量减少跳转与决策负担。',
+    'flow.1.title': '选门店',
+    'flow.1.body': '定位推荐最近 / 在营业门店，地图 + 列表双视图。',
+    'flow.2.title': '挑饮品',
+    'flow.2.body': '左侧分类锚点 + 右侧商品流，弹窗选规格直接加购。',
+    'flow.3.title': '下单付款',
+    'flow.3.body': '购物车常驻底部，价格实时累计，一键结算。',
+    'flow.4.title': '取餐复购',
+    'flow.4.body': '取餐码醒目展示，「再来一单」促进复购。',
+
+    'ds.eyebrow': 'Design System',
+    'ds.title': '设计规范',
+    'ds.lead':
+      '一套围绕「咖啡红 + 自然色」展开的视觉语言，保证 30+ 页面的一致性与可扩展性。',
+    'spec.color.title': '色彩系统',
+    'swatch.1.name': '品牌红',
+    'swatch.2.name': '抹茶绿',
+    'swatch.3.name': '奶咖米',
+    'swatch.4.name': '深可可',
+    'swatch.5.name': '中性灰',
+    'spec.color.desc':
+      '品牌红用于价格、CTA 与选中态，强化「行动点」；抹茶绿承载节气与环保信息；米色与可可色营造温暖的咖啡气质。',
+    'spec.type.title': '文字层级',
+    'type.pageTitle': '页面标题 20',
+    'type.pageTitleSample': '想对你说',
+    'type.sectionTitle': '区块标题 18',
+    'type.sectionTitleSample': '西西里美式',
+    'type.body': '正文 14',
+    'type.bodySample': '清新柠檬风味跳跃，轻盈气泡层层涌起。',
+    'type.caption': '辅助 12',
+    'type.captionSample': '门店距离您约 248m · 营业中',
+    'spec.type.desc':
+      '中文使用苹方（PingFang SC），数字与英文搭配 SF Pro，保证价格、距离等信息清晰易读。',
+    'spec.components.title': '核心组件',
+    'ui.btnAddCart': '¥20 加入购物车',
+    'ui.btnReorder': '再来一单',
+    'ui.tagSize': '超大冰杯 473ml',
+    'ui.tagEco': '♻ 自带杯减 5 元',
+    'token.1': '圆角 12 / 999px',
+    'token.2': '8pt 间距栅格',
+    'token.3': '卡片投影 0 2 8',
+    'token.4': '主按钮：胶囊 + 品牌红',
+
+    'screens.eyebrow': 'Key Screens',
+    'screens.title': '点单链路',
+    'screens.lead': '从浏览菜单到拿到取餐码，全程保持「价格可见、规格可改、随时回退」。',
+    'shot.1.alt': '首页菜单',
+    'shot.1.cap': '① 菜单页：分类锚点 + 商品流',
+    'shot.2.alt': '商品详情',
+    'shot.2.cap': '② 规格弹窗：杯型温度一目了然',
+    'shot.3.alt': '购物车',
+    'shot.3.cap': '③ 常驻购物车：实时累计金额',
+    'shot.4.alt': '取餐码',
+    'shot.4.cap': '④ 取餐码：醒目 + 一键再来一单',
+
+    'h1.eyebrow': 'Highlight 01',
+    'h1.title': '会员体系：把交易沉淀为关系',
+    'h1.feature.title': '积分 → 商城 → 复购的闭环',
+    'h1.feature.body':
+      '每消费 5 元积 1 分，积分可在积分商城兑换品牌周边（吸管杯、保温杯等），形成「喝得越多、越想留下」的正循环。',
+    'h1.feature.1': '会员中心一屏聚合积分、优惠券、礼品',
+    'h1.feature.2': '会员码 30 秒刷新，线下消费也能积分',
+    'h1.feature.3': '积分明细透明可查，降低客服压力',
+    'shot.5.alt': '会员中心',
+    'shot.6.alt': '积分商城',
+    'shot.7.alt': '会员码',
+    'shot.7.cap': '会员码：线下扫码积分',
+    'shot.8.alt': '积分明细',
+    'shot.8.cap': '积分明细：来源清晰',
+
+    'h2.eyebrow': 'Highlight 02',
+    'h2.title': '品牌表达：不止是点单工具',
+    'h2.feature.title': '节气营销 × 环保主张',
+    'h2.feature.body':
+      '结合二十四节气推出限定视觉与饮品（如「立春 · 抹茶奶绿」），把品牌的文化感融入日常点单，制造期待与传播点。',
+    'h2.feature.1': '节气主题页 + 海报，强化品牌调性',
+    'h2.feature.2': '「自带杯减 5 元」把环保变成可参与的行动',
+    'h2.feature.3': '品牌故事页传递「咖啡成为生活的一部分」',
+    'shot.9.alt': '立春节气页',
+    'shot.10.alt': '节气海报',
+    'shot.11.alt': '品牌故事',
+    'shot.11.cap': '品牌故事：概念 · 环保 · 直营',
+    'shot.12.alt': '门店选择',
+    'shot.12.cap': '门店选择：地图 + 距离 + 营业状态',
+
+    'outcome.eyebrow': 'Outcome',
+    'results.1.num': '30+',
+    'results.1.label': '设计页面',
+    'results.2.num': '4 步',
+    'results.2.label': '核心点单流程',
+    'results.3.num': '1 套',
+    'results.3.label': '视觉与组件规范',
+    'results.4.num': '3 块',
+    'results.4.label': '点单 · 会员 · 品牌',
+    'reflect.p1':
+      '<strong>做对了什么：</strong>把点单效率放在首位，常驻购物车与规格弹窗减少页面跳转；用一套视觉规范统一品牌、会员与交易模块。',
+    'reflect.p2':
+      '<strong>如果重来：</strong>会更早整理组件与样式规范，方便节气主题等后续扩展；也会多找同学试用手稿，优化下单路径。',
+    'reflect.p3':
+      '<strong>收获：</strong>完整经历了一次小程序界面设计——从理解业务到输出页面与规范，更清楚设计如何配合实际使用场景。',
+
+    'footer.copy': '© 2026 施博瀚 · XXXX Coffee 在线点单小程序案例',
+  },
+  en: {
+    'hero.tag': '☕ 0 → 1 · Mini Program Design',
+    'hero.title': 'XXXX Coffee<br />Ordering Mini Program',
+    'hero.sub':
+      'A WeChat mini program built from scratch for a specialty coffee brand—covering the full journey from finding a store to ordering, pickup, and repeat purchase. Membership points, seasonal marketing, and sustainability messaging turn a one-off coffee run into an ongoing brand relationship.',
+    'meta.roleVal': 'UI/UX Designer',
+    'meta.periodVal': '2025 · ~10 weeks',
+    'meta.platformVal': 'WeChat Mini Program · iOS / Android',
+    'meta.scopeVal': 'UI · interaction · visual · design guidelines',
+    'meta.toolsVal': 'Figma · Jimeng · ChatGPT',
+    'hero.coverAlt': 'XXXX Coffee mini program cover',
+
+    'overview.eyebrow': 'Overview',
+    'overview.title': 'Project background',
+    'overview.lead':
+      'The client is a local specialty coffee brand positioned around making coffee part of everyday life, with several company-owned stores. Online ordering relied on third-party platforms—high commissions, no owned membership data, and a diluted brand experience. They wanted a <strong>proprietary ordering channel</strong> that could transact efficiently while telling the brand story and retaining repeat customers.',
+    'facts.1.num': '4 Tab',
+    'facts.1.label': 'Home / Order / Orders / Profile',
+    'facts.2.num': '30+',
+    'facts.2.label': 'Fully designed screens',
+    'facts.3.num': '3 Core',
+    'facts.3.label': 'Systems: Ordering · Membership · Brand',
+    'facts.4.num': '1 System',
+    'facts.4.label': 'Reusable design guidelines',
+
+    'challenge.eyebrow': 'Challenge',
+    'challenge.title': 'Challenges & goals',
+    'challenge.lead':
+      'Balance transaction efficiency with brand warmth—users should finish an order in 30 seconds, yet still remember the brand.',
+    'cards.1.title': 'Order fast',
+    'cards.1.body':
+      'Coffee is a high-frequency, immediate purchase. Users often order during their commute. The path must be short, low-friction, and easy to adjust.',
+    'cards.2.title': 'Drive repeat visits',
+    'cards.2.body':
+      'Off third-party platforms, membership points, coupons, and “Order again” must turn one-time buyers into regulars.',
+    'cards.3.title': 'Establish the brand',
+    'cards.3.body':
+      'Embed brand values—sustainability, seasonal culture—inside a functional mini program so it feels like more than a checkout tool.',
+    'cards.4.title': 'Clarify multi-store',
+    'cards.4.body':
+      'Multiple stores, hours, and inventory mean users must quickly pick the nearest open location and avoid wrong-store orders.',
+
+    'research.eyebrow': 'Research',
+    'research.title': 'Users & pain points',
+    'research.lead':
+      'Store visits and light user interviews helped map two typical user scenarios and pain points.',
+    'persona.1.name': 'Commuter · Alex',
+    'persona.1.role': 'One cup daily, efficiency first',
+    'persona.1.1': 'Pre-order for pickup without waiting in line',
+    'persona.1.2': 'Orders the same drinks and wants a quick “Order again”',
+    'persona.1.3': 'Cares about points and deals but won’t study complex rules',
+    'persona.2.name': 'Lifestyle explorer · Green',
+    'persona.2.role': 'Weekend visits, experience matters',
+    'persona.2.1': 'Enjoys seasonal limited releases and new items',
+    'persona.2.2': 'Aligns with sustainability and brings a reusable cup',
+    'persona.2.3': 'Shares when the experience looks good or tells a story',
+
+    'ia.eyebrow': 'Information Architecture',
+    'ia.title': 'Core ordering flow',
+    'ia.lead': 'The journey is compressed into four steps, each minimizing navigation and decision load.',
+    'flow.1.title': 'Choose store',
+    'flow.1.body': 'Location recommends the nearest open store; map and list views.',
+    'flow.2.title': 'Pick drinks',
+    'flow.2.body': 'Category anchors on the left, product feed on the right; spec sheet adds to cart in place.',
+    'flow.3.title': 'Pay',
+    'flow.3.body': 'Persistent cart bar, live total, one-tap checkout.',
+    'flow.4.title': 'Pickup & reorder',
+    'flow.4.body': 'Prominent pickup code plus “Order again” to drive repeat purchase.',
+
+    'ds.eyebrow': 'Design System',
+    'ds.title': 'Design system',
+    'ds.lead':
+      'A visual language built around coffee red and natural tones, keeping 30+ screens consistent and extensible.',
+    'spec.color.title': 'Color system',
+    'swatch.1.name': '品牌红 Brand Red',
+    'swatch.2.name': '抹茶绿 Matcha Green',
+    'swatch.3.name': '奶咖米 Latte Beige',
+    'swatch.4.name': '深可可 Deep Cocoa',
+    'swatch.5.name': '中性灰 Neutral Gray',
+    'spec.color.desc':
+      'Brand red marks prices, CTAs, and selected states to emphasize action; matcha green carries seasonal and eco messaging; beige and cocoa add warm coffee character.',
+    'spec.type.title': 'Type scale',
+    'type.pageTitle': 'Page title 20',
+    'type.pageTitleSample': 'A note for you',
+    'type.sectionTitle': 'Section title 18',
+    'type.sectionTitleSample': 'Sicilian Americano',
+    'type.body': 'Body 14',
+    'type.bodySample': 'Bright lemon notes with light, layered bubbles.',
+    'type.caption': 'Caption 12',
+    'type.captionSample': 'Store ~248 m away · Open now',
+    'spec.type.desc':
+      'PingFang SC for Chinese; SF Pro for numerals and English so prices and distances stay crisp.',
+    'spec.components.title': 'Core components',
+    'ui.btnAddCart': '¥20 Add to cart',
+    'ui.btnReorder': 'Order again',
+    'ui.tagSize': 'Extra-large iced 473 ml',
+    'ui.tagEco': '♻ ¥5 off with reusable cup',
+    'token.1': 'Radius 12 / 999 px',
+    'token.2': '8 pt spacing grid',
+    'token.3': 'Card shadow 0 2 8',
+    'token.4': 'Primary button: pill + brand red',
+
+    'screens.eyebrow': 'Key Screens',
+    'screens.title': 'Ordering journey',
+    'screens.lead':
+      'From menu browse to pickup code—price always visible, specs editable, easy to step back.',
+    'shot.1.alt': 'Home menu',
+    'shot.1.cap': '① Menu: category anchors + product feed',
+    'shot.2.alt': 'Product detail',
+    'shot.2.cap': '② Spec sheet: size and temperature at a glance',
+    'shot.3.alt': 'Cart',
+    'shot.3.cap': '③ Persistent cart: live running total',
+    'shot.4.alt': 'Pickup code',
+    'shot.4.cap': '④ Pickup code: prominent + one-tap reorder',
+
+    'h1.eyebrow': 'Highlight 01',
+    'h1.title': 'Membership: turning transactions into relationships',
+    'h1.feature.title': 'Points → store → repeat purchase loop',
+    'h1.feature.body':
+      'Earn 1 point per ¥5 spent; redeem for brand merch (straw tumblers, thermoses, etc.)—“the more you drink, the more you stay.”',
+    'h1.feature.1': 'Member hub aggregates points, coupons, and gifts on one screen',
+    'h1.feature.2': 'Member QR refreshes every 30 seconds; in-store purchases earn points too',
+    'h1.feature.3': 'Transparent point history reduces support load',
+    'shot.5.alt': 'Member center',
+    'shot.6.alt': 'Points store',
+    'shot.7.alt': 'Member QR',
+    'shot.7.cap': 'Member QR: scan in store to earn points',
+    'shot.8.alt': 'Point history',
+    'shot.8.cap': 'Point history: clear source breakdown',
+
+    'h2.eyebrow': 'Highlight 02',
+    'h2.title': 'Brand expression: more than an ordering tool',
+    'h2.feature.title': 'Seasonal marketing × sustainability',
+    'h2.feature.body':
+      'Limited visuals and drinks tied to the 24 solar terms (e.g. “Start of Spring · Matcha Milk Green”) weave culture into daily ordering and create moments worth sharing.',
+    'h2.feature.1': 'Seasonal landing pages and posters reinforce brand tone',
+    'h2.feature.2': '“¥5 off with reusable cup” turns sustainability into a tangible action',
+    'h2.feature.3': 'Brand story page delivers “coffee as part of life”',
+    'shot.9.alt': 'Start of Spring seasonal page',
+    'shot.10.alt': 'Seasonal poster',
+    'shot.11.alt': 'Brand story',
+    'shot.11.cap': 'Brand story: concept · sustainability · direct-operated stores',
+    'shot.12.alt': 'Store picker',
+    'shot.12.cap': 'Store picker: map + distance + open status',
+
+    'outcome.eyebrow': 'Outcome',
+    'results.1.num': '30+',
+    'results.1.label': 'Designed screens',
+    'results.2.num': '4 steps',
+    'results.2.label': 'Core ordering flow',
+    'results.3.num': '1 system',
+    'results.3.label': 'Visual & component guidelines',
+    'results.4.num': '3 areas',
+    'results.4.label': 'Order · Membership · Brand',
+    'reflect.p1':
+      '<strong>What worked:</strong> Ordering efficiency first—a persistent cart and in-place spec sheet cut navigation; one visual system unified brand, membership, and checkout.',
+    'reflect.p2':
+      '<strong>If I did it again:</strong> I would organize components and styles earlier for seasonal themes; I would also ask peers to try wireframes and refine the order path.',
+    'reflect.p3':
+      '<strong>Takeaways:</strong> A full mini program UI pass—from business context to screens and guidelines—clarified how design supports real usage.',
+
+    'footer.copy': '© 2026 Shibohan Shi · XXXX Coffee ordering mini program case study',
+  },
+};

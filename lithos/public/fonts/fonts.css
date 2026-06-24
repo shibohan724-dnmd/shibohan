@@ -1,0 +1,8 @@
+/* 梦源宋体 — Dream Han Serif CN W15 (SIL OFL, Pal3love/dream-han-cjk) */
+@font-face {
+  font-family: 'Dream Han Serif';
+  src: url('/fonts/DreamHanSerifCN.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

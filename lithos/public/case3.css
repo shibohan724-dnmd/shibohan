@@ -1,0 +1,143 @@
+/* ===========================================================
+   KOVA 案例页专属样式：覆盖 case.css 的品牌色 + 网站特有组件
+   （需在 case.css 之后引入）
+   =========================================================== */
+
+:root {
+  /* KOVA 品牌色：砖红 + 蜜桃 + 奶油 + 浓缩棕 */
+  --accent: #e7a977;            /* 暖蜜桃，替换原柠檬绿强调色 */
+  --brand: #8a3220;             /* 砖红 CTA / 页脚 */
+  --brand-soft: #e6b08c;        /* 浅蜜桃文字 */
+  --kova-peach: #efc49c;        /* 按钮蜜桃 */
+  --kova-cream: #f3ede2;        /* 奶油 */
+  --kova-espresso: #2a1c14;     /* 浓缩棕 */
+}
+
+/* 强调色相关元件改成暖色 */
+.card__icon { background: rgba(231, 169, 119, 0.14); }
+.feature__list li::before { color: var(--kova-peach); }
+.hero__tag {
+  color: var(--brand-soft);
+  background: rgba(138, 50, 32, 0.18);
+  border-color: rgba(138, 50, 32, 0.5);
+}
+
+/* ---------- 浏览器窗口框（展示整页网站截图） ---------- */
+.browser {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+  margin-top: 40px;
+}
+.browser__bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #2b2b2b;
+  border-bottom: 1px solid #000;
+}
+.browser__dots { display: flex; gap: 8px; }
+.browser__dots i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+.browser__dots i:nth-child(1) { background: #ff5f57; }
+.browser__dots i:nth-child(2) { background: #febc2e; }
+.browser__dots i:nth-child(3) { background: #28c840; }
+.browser__url {
+  flex: 1;
+  max-width: 380px;
+  margin: 0 auto;
+  background: #1a1a1a;
+  color: #8f8f8f;
+  font-size: 12px;
+  padding: 6px 16px;
+  border-radius: 8px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* 可在框内滚动浏览整页 */
+.browser__view {
+  max-height: 600px;
+  overflow-y: auto;
+  background: #fff;
+  scrollbar-width: thin;
+  scrollbar-color: #c9c2b6 #efe9df;
+}
+.browser__view img { width: 100%; display: block; }
+.browser__view::-webkit-scrollbar { width: 10px; }
+.browser__view::-webkit-scrollbar-track { background: #efe9df; }
+.browser__view::-webkit-scrollbar-thumb { background: #c9c2b6; border-radius: 6px; }
+.browser__hint {
+  font-size: 12.5px;
+  color: var(--text-faint);
+  text-align: center;
+  margin-top: 14px;
+}
+
+/* 标题 + 描述（每个页面区块） */
+.page-block { margin-top: 64px; }
+.page-block:first-of-type { margin-top: 44px; }
+.page-block__head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.page-block__head h3 { font-size: clamp(19px, 2.4vw, 24px); font-weight: 700; }
+.page-block__head .muted { font-size: 13px; color: var(--text-faint); }
+.page-block__desc { font-size: 15px; color: var(--text-dim); margin-top: 10px; max-width: 70ch; }
+
+/* ---------- 产品风味家族 ---------- */
+.family {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 18px;
+  margin-top: 44px;
+}
+.family__item {
+  background: linear-gradient(180deg, var(--kova-cream), #e7e0d4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 18px 20px;
+  text-align: center;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.family__item:hover { transform: translateY(-6px); }
+.family__item img { width: 70%; margin: 0 auto 16px; filter: drop-shadow(0 12px 18px rgba(0,0,0,.25)); }
+.family__name { font-size: 16px; font-weight: 700; color: var(--kova-espresso); }
+.family__roast { font-size: 12px; color: #7a6a5c; margin-top: 3px; letter-spacing: .04em; }
+.family__note { font-size: 12.5px; color: #8a7868; margin-top: 10px; line-height: 1.5; }
+
+/* ---------- 产品大图（白底实拍/渲染） ---------- */
+.shotpair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+.shotpair figure {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.shotpair img { width: 100%; }
+.shotpair figcaption { font-size: 13px; color: var(--text-dim); padding: 14px 18px; background: var(--card); }
+
+/* ---------- 评价卡 ---------- */
+.feature__media .review-card {
+  width: 300px;
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px rgba(0,0,0,.4);
+}
+.feature__media .review-card img { width: 100%; }
+
+.cart-frame {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 50px rgba(0,0,0,.45);
+}
+.cart-frame img { width: 100%; display: block; }
+
+@media (max-width: 720px) {
+  .shotpair { grid-template-columns: 1fr; }
+  .browser__view { max-height: 460px; }
+}

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>秉坤订货平台 B 端后台 · 案例 · 施博瀚</title>
+  <meta name="description" content="企业级订货管理后台界面设计：数据看板、订单流程、表单校验与组件规范。" />
+  <script>
+    try {
+      var l = localStorage.getItem('lithos-locale');
+      document.documentElement.classList.add(l === 'zh' ? 'locale-zh' : 'locale-en');
+    } catch (e) {
+      document.documentElement.classList.add('locale-en');
+    }
+  </script>
+  <link rel="stylesheet" href="case.css" />
+</head>
+<body data-case-page="work4">
+  <header class="case-nav">
+    <a href="/" class="case-nav__logo">
+      <img src="/assets/logo-shibohan-white.png" alt="施博瀚" />
+    </a>
+    <div class="case-nav__right">
+      <a href="/" class="case-nav__back" data-i18n="nav.back">← 返回作品集</a>
+      <div id="localeToggle"></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="hero__tag" data-i18n="hero.tag">📊 B 端 · 后台 UI 设计</span>
+      <h1 class="hero__title" data-i18n="hero.title" data-i18n-html>秉坤订货平台<br />B 端后台设计</h1>
+      <p class="hero__sub" data-i18n="hero.sub">
+        面向品牌总部、经销商与门店的订货管理后台，覆盖经营看板、订货单处理、发货跟进与报表分析。在模块多、字段密的前提下，通过清晰的信息层级与统一的组件语言，让日常操作更高效、也更易上手。
+      </p>
+
+      <dl class="hero__meta">
+        <div><dt data-i18n="meta.role">我的角色</dt><dd data-i18n="meta.roleVal">UI 设计师</dd></div>
+        <div><dt data-i18n="meta.period">项目周期</dt><dd data-i18n="meta.periodVal">2024 · 约 8 周</dd></div>
+        <div><dt data-i18n="meta.platform">平台</dt><dd data-i18n="meta.platformVal">Web 桌面端</dd></div>
+        <div><dt data-i18n="meta.scope">负责范围</dt><dd data-i18n="meta.scopeVal">界面设计 · 交互 · 视觉 · 设计规范</dd></div>
+        <div><dt data-i18n="meta.tools">工具</dt><dd data-i18n="meta.toolsVal">Sketch · Photoshop · Axure</dd></div>
+      </dl>
+
+      <div class="hero__cover">
+        <img src="assets/case4/hero.png" data-i18n-alt="hero.coverAlt" alt="秉坤订货平台后台界面" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="overview.eyebrow">Overview</span>
+      <h2 data-i18n="overview.title">项目背景</h2>
+      <p class="lead" data-i18n="overview.lead">
+        秉坤（PEKON）是一套面向快消与连锁品牌的订货与运营管理后台，连接总部、经销商与门店。业务侧需要在同一系统里完成「看数据 → 下订单 → 跟发货 → 查报表」的闭环，界面必须同时承载看板、列表、长表单与多 Tab 详情，还要兼顾不同角色的使用习惯。
+      </p>
+      <div class="facts">
+        <div class="fact"><div class="fact__num" data-i18n="facts.1.num">6+</div><div class="fact__label" data-i18n="facts.1.label">核心业务模块</div></div>
+        <div class="fact"><div class="fact__num" data-i18n="facts.2.num">30+</div><div class="fact__label" data-i18n="facts.2.label">后台页面与流程</div></div>
+        <div class="fact"><div class="fact__num" data-i18n="facts.3.num">1 套</div><div class="fact__label" data-i18n="facts.3.label">色彩与组件规范</div></div>
+        <div class="fact"><div class="fact__num" data-i18n="facts.4.num">3 类</div><div class="fact__label" data-i18n="facts.4.label">看板 · 列表 · 表单</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="challenge.eyebrow">Challenge</span>
+      <h2 data-i18n="challenge.title">挑战与目标</h2>
+      <p class="lead" data-i18n="challenge.lead">在信息密集的后台场景中，让数据可读、路径可预期、组件可复用，降低培训与协作成本。</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card__icon">📋</div>
+          <h3 data-i18n="cards.1.title">信息层级</h3>
+          <p data-i18n="cards.1.body">模块多、字段多，需要通过分区、折叠与标题层级，让用户先抓住重点指标与待办，再进入细节。</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">⚡</div>
+          <h3 data-i18n="cards.2.title">操作效率</h3>
+          <p data-i18n="cards.2.body">高频操作尽量在列表行内完成；筛选、批量处理与快捷入口减少页面来回跳转。</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">💬</div>
+          <h3 data-i18n="cards.3.title">反馈清晰</h3>
+          <p data-i18n="cards.3.body">表单校验、状态标签与顶部提示要明确，让用户知道哪里未完成、下一步该做什么。</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">🧩</div>
+          <h3 data-i18n="cards.4.title">规范统一</h3>
+          <p data-i18n="cards.4.body">表格、按钮、弹窗、消息条共用一套样式，方便开发落地与后续功能扩展。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="users.eyebrow">Users</span>
+      <h2 data-i18n="users.title">目标用户与场景</h2>
+      <p class="lead" data-i18n="users.lead">两类主要使用者决定了导航优先级与页面信息密度。</p>
+      <div class="personas">
+        <div class="persona">
+          <div class="persona__top">
+            <div class="persona__avatar">📊</div>
+            <div>
+              <div class="persona__name" data-i18n="personas.1.name">总部运营 · 王经理</div>
+              <div class="persona__role" data-i18n="personas.1.role">看数据 · 盯异常 · 协调发货</div>
+            </div>
+          </div>
+          <ul>
+            <li data-i18n="personas.1.1">每天先看经营看板，关注订货额、回款与未发货量</li>
+            <li data-i18n="personas.1.2">需要快速筛出异常订单与超期账款</li>
+            <li data-i18n="personas.1.3">希望常用报表入口固定、少点几次就能到</li>
+          </ul>
+        </div>
+        <div class="persona">
+          <div class="persona__top">
+            <div class="persona__avatar">📝</div>
+            <div>
+              <div class="persona__name" data-i18n="personas.2.name">门店订货员 · 小林</div>
+              <div class="persona__role" data-i18n="personas.2.role">下单 · 改单 · 跟进度</div>
+            </div>
+          </div>
+          <ul>
+            <li data-i18n="personas.2.1">按固定节奏补货，熟悉「选商品 → 填数量 → 提交」</li>
+            <li data-i18n="personas.2.2">表单字段多，需要清楚哪些是必填、哪里填错</li>
+            <li data-i18n="personas.2.3">提交后要能随时查看发货状态与明细</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="ia.eyebrow">Information Architecture</span>
+      <h2 data-i18n="ia.title">核心业务流程</h2>
+      <p class="lead" data-i18n="ia.lead">围绕订货主链路梳理页面结构，保证「进得来、找得到、改得动」。</p>
+      <div class="flow">
+        <div class="flow__step"><span>01</span><h4 data-i18n="flow.1.title">经营概览</h4><p data-i18n="flow.1.body">看板汇总核心指标、趋势图与门店排名，一眼掌握经营健康度。</p></div>
+        <div class="flow__step"><span>02</span><h4 data-i18n="flow.2.title">订货处理</h4><p data-i18n="flow.2.body">列表筛选待办订单，进入详情核对价格、商品与收货信息。</p></div>
+        <div class="flow__step"><span>03</span><h4 data-i18n="flow.3.title">发货跟进</h4><p data-i18n="flow.3.body">按状态跟踪发货进度，处理异常与退款相关单据。</p></div>
+        <div class="flow__step"><span>04</span><h4 data-i18n="flow.4.title">报表分析</h4><p data-i18n="flow.4.body">从报表中心下钻明细，支持导出与多维度对比。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="ds.eyebrow">Design System</span>
+      <h2 data-i18n="ds.title">设计规范</h2>
+      <p class="lead" data-i18n="ds.lead">以深蓝导航 + 浅灰内容区建立 B 端气质，用主色强调操作与选中态，保证 30+ 页面视觉一致。</p>
+      <div class="specs">
+        <div class="spec-block">
+          <h3 data-i18n="ds.color.title">色彩与层级</h3>
+          <p data-i18n="ds.color.body">导航区深蓝稳重大气；内容区浅底 + 卡片分区；主色蓝用于按钮、链接与选中菜单；红 / 绿 / 黄消息条对应异常、成功与提醒。</p>
+        </div>
+        <div class="spec-block">
+          <h3 data-i18n="ds.type.title">文字与表格</h3>
+          <p data-i18n="ds.type.body">标题、表头、正文、辅助说明四级字号；表格支持横向滚动、固定表头与行内操作列，适配宽表场景。</p>
+        </div>
+      </div>
+      <figure class="slides__item" style="margin-top:32px">
+        <img src="assets/case4/design-goals.png" data-i18n-alt="img.goals" alt="设计目标与前期梳理" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="pages.eyebrow">Key Pages</span>
+      <h2 data-i18n="pages.title">核心页面</h2>
+      <p class="lead" data-i18n="pages.lead">四个关键界面覆盖后台最常见的使用路径，以下为节选设计稿。</p>
+
+      <div class="page-block">
+        <div class="page-block__head">
+          <h3 data-i18n="pages.1.title">① 经营数据看板</h3>
+          <span class="muted" data-i18n="pages.1.url">pekon.admin / dashboard</span>
+        </div>
+        <p class="page-block__desc" data-i18n="pages.1.desc">顶部聚合本月订货额、回款、订单量等核心指标，中部趋势图切换销售额 / 回款 / 订单量，右侧门店排名辅助发现异常。左侧深色导航固定模块入口，减少迷路成本。</p>
+        <div class="browser">
+          <div class="browser__bar">
+            <div class="browser__dots"><i></i><i></i><i></i></div>
+            <div class="browser__url" data-i18n="pages.1.url">pekon.admin / dashboard</div>
+          </div>
+          <div class="browser__view">
+            <img src="assets/case4/dashboard.png" data-i18n-alt="img.dashboard" alt="经营数据看板" />
+          </div>
+        </div>
+        <p class="browser__hint" data-i18n="pages.1.hint">↑ 看板区支持按时间维度切换图表</p>
+      </div>
+
+      <div class="page-block">
+        <div class="page-block__head">
+          <h3 data-i18n="pages.2.title">② 订货单列表</h3>
+          <span class="muted" data-i18n="pages.2.url">pekon.admin / orders</span>
+        </div>
+        <p class="page-block__desc" data-i18n="pages.2.desc">标准列表页：顶部待办数字卡片 + 常用功能快捷入口，中部宽表承载订单筛选与行内操作。操作列固定在右侧，筛选区可折叠，减轻信息压迫感。</p>
+        <div class="browser">
+          <div class="browser__bar">
+            <div class="browser__dots"><i></i><i></i><i></i></div>
+            <div class="browser__url" data-i18n="pages.2.url">pekon.admin / orders</div>
+          </div>
+          <div class="browser__view">
+            <img src="assets/case4/order-list.png" data-i18n-alt="img.orderList" alt="订货单列表" />
+          </div>
+        </div>
+        <p class="browser__hint" data-i18n="pages.2.hint">↑ 列表支持筛选、排序与行内操作</p>
+      </div>
+
+      <div class="page-block">
+        <div class="page-block__head">
+          <h3 data-i18n="pages.3.title">③ 订货单详情</h3>
+          <span class="muted" data-i18n="pages.3.url">pekon.admin / order-detail</span>
+        </div>
+        <p class="page-block__desc" data-i18n="pages.3.desc">详情页拆分基础信息、价格信息与商品信息区块，底部 Tab 切换订货明细、付款单与退款单。宽表区域可横向滚动，状态用色块标签区分待发货、草稿等。</p>
+        <div class="browser">
+          <div class="browser__bar">
+            <div class="browser__dots"><i></i><i></i><i></i></div>
+            <div class="browser__url" data-i18n="pages.3.url">pekon.admin / order-detail</div>
+          </div>
+          <div class="browser__view">
+            <img src="assets/case4/order-detail.png" data-i18n-alt="img.orderDetail" alt="订货单详情" />
+          </div>
+        </div>
+        <p class="browser__hint" data-i18n="pages.3.hint">↑ 详情 + 多 Tab 明细的典型 B 端结构</p>
+      </div>
+
+      <div class="page-block">
+        <div class="page-block__head">
+          <h3 data-i18n="pages.4.title">④ 表单录入与校验</h3>
+          <span class="muted" data-i18n="pages.4.url">pekon.admin / order-edit</span>
+        </div>
+        <p class="page-block__desc" data-i18n="pages.4.desc">长表单按模块折叠，必填项缺失时字段描红并顶部汇总提示。支持悬浮说明与气泡反馈，在空间有限时补充字段解释，降低误填率。</p>
+        <div class="browser">
+          <div class="browser__bar">
+            <div class="browser__dots"><i></i><i></i><i></i></div>
+            <div class="browser__url" data-i18n="pages.4.url">pekon.admin / order-edit</div>
+          </div>
+          <div class="browser__view">
+            <img src="assets/case4/order-form.png" data-i18n-alt="img.orderForm" alt="表单录入与校验" />
+          </div>
+        </div>
+        <p class="browser__hint" data-i18n="pages.4.hint">↑ 校验反馈与引导示意</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="h1.eyebrow">Highlight 01</span>
+      <h2 data-i18n="h1.title">设计理念落地</h2>
+      <div class="feature">
+        <div class="feature__media">
+          <figure class="slides__item">
+            <img src="assets/case4/philosophy.png" data-i18n-alt="img.philosophy" alt="设计理念与界面示意" />
+          </figure>
+        </div>
+        <div class="feature__text">
+          <h3 data-i18n="h1.subtitle">专业 · 效率 · 一致性</h3>
+          <p data-i18n="h1.body">复杂 B 端首先要「看得懂」：布局分区清晰、重点数据放大；其次「用得顺」：减少跳转与重复输入；最后「长得统」：组件与交互语言一致，降低学习成本。</p>
+          <ul class="feature__list">
+            <li data-i18n="h1.li.1">专业：信息架构围绕真实业务路径，而非堆砌功能</li>
+            <li data-i18n="h1.li.2">效率：待办、快捷入口与行内操作缩短高频路径</li>
+            <li data-i18n="h1.li.3">一致：导航、表格、表单、弹窗遵循同一套规范</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="h2.eyebrow">Highlight 02</span>
+      <h2 data-i18n="h2.title">组件与控件规范</h2>
+      <p class="lead" data-i18n="h2.lead">整理按钮、表单、日期选择、弹窗、消息条等基础组件，方便设计与开发对齐。</p>
+      <div class="feature">
+        <div class="feature__media">
+          <figure class="slides__item">
+            <img src="assets/case4/components.png" data-i18n-alt="img.components" alt="部分基础组件整理" />
+          </figure>
+        </div>
+        <div class="feature__text">
+          <h3 data-i18n="h2.subtitle">可复用的后台组件库</h3>
+          <p data-i18n="h2.body">针对 B 端高频场景沉淀组件示例：多级菜单、确认弹窗、表格筛选、日历与上传状态等，减少后续页面「各做各的」。</p>
+          <ul class="feature__list">
+            <li data-i18n="h2.li.1">导航与菜单：支持多级展开与当前态高亮</li>
+            <li data-i18n="h2.li.2">反馈：成功 / 异常 / 询问三类消息条样式统一</li>
+            <li data-i18n="h2.li.3">表单：输入框聚焦态、禁用态与错误态一目了然</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="h3.eyebrow">Highlight 03</span>
+      <h2 data-i18n="h3.title">金融模块延展</h2>
+      <p class="lead" data-i18n="h3.lead">在同一套视觉语言下，将规范延展至财富 / 基金类页面，保持品牌感与信息层级一致。</p>
+      <div class="feature">
+        <div class="feature__media">
+          <figure class="slides__item">
+            <img src="assets/case4/fund-ui.png" data-i18n-alt="img.fund" alt="财富模块界面延展" />
+          </figure>
+        </div>
+        <div class="feature__text">
+          <h3 data-i18n="h3.subtitle">跨业务模块的视觉延续</h3>
+          <p data-i18n="h3.body">基金列表、收益卡片与人气榜单沿用主色与卡片结构，在业务不同的情况下仍让用户感到「还是同一个系统」。</p>
+          <ul class="feature__list">
+            <li data-i18n="h3.li.1">卡片化呈现收益与风险标签</li>
+            <li data-i18n="h3.li.2">榜单与推荐位强化关键产品曝光</li>
+            <li data-i18n="h3.li.3">暖色强调数据同时保持整体冷静专业</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="outcome.eyebrow">Outcome</span>
+      <h2 data-i18n="outcome.label">成果与反思</h2>
+      <div class="results">
+        <div class="result"><div class="result__num" data-i18n="results.1.num">6+</div><div class="result__label" data-i18n="results.1.label">模块统一导航结构</div></div>
+        <div class="result"><div class="result__num" data-i18n="results.2.num">30+</div><div class="result__label" data-i18n="results.2.label">页面与流程设计</div></div>
+        <div class="result"><div class="result__num" data-i18n="results.3.num">1 套</div><div class="result__label" data-i18n="results.3.label">组件与样式规范</div></div>
+      </div>
+      <div class="reflection">
+        <p data-i18n="reflect.p1" data-i18n-html><strong>做对了什么：</strong>先梳理模块与主链路，再统一表格、表单与提示组件；看板、列表、详情三类页面风格一致，培训和上手成本更低。</p>
+        <p data-i18n="reflect.p2" data-i18n-html><strong>如果重来：</strong>会更早输出组件示例页并走查复杂表单；宽表场景也会多预留一版「精简列」视图，方便小屏使用。</p>
+        <p data-i18n="reflect.p3" data-i18n-html><strong>收获：</strong>系统做了 B 端后台界面，对高密度信息排版、状态表达与组件化协作有了更具体的体会，也为后续企业与平台类产品打下基础。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="case-footer">
+    <div class="wrap">
+      <p data-i18n="footer.cta">对这个项目感兴趣，或想聊聊合作？</p>
+      <a class="btn-pill" href="mailto:13676118855@163.com" data-i18n="footer.email">给我发邮件 →</a>
+      <p style="margin-top:24px"><a class="case-nav__back" href="/" data-i18n="nav.backHome">← 返回作品集首页</a></p>
+      <p class="copy" data-i18n="footer.copy">© 2026 施博瀚 · 秉坤订货平台 B 端后台设计案例</p>
+    </div>
+  </footer>
+
+  <script src="i18n/common.js"></script>
+  <script src="i18n/work4.js"></script>
+  <script src="locale.js"></script>
+</body>
+</html>
