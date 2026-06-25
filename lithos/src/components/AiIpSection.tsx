@@ -1,8 +1,62 @@
 import { useLocale } from '../context/LocaleContext'
+import { AI_IP_IMAGES } from '../data/content'
 import { SectionHeading } from './SectionHeading'
 import { ScrollReveal } from './ScrollReveal'
 
-const SHOWCASE_IMAGE = '/assets/coffy-ip-showcase.png'
+function ShowcaseRow({
+  name,
+  lead,
+  highlights,
+  captions,
+  imageAlt,
+  image,
+}: {
+  name: string
+  lead: string
+  highlights: readonly { label: string; title: string; body: string }[]
+  captions: readonly string[]
+  imageAlt: string
+  image: string
+}) {
+  return (
+    <div className="w-full md:w-[88%] max-w-[960px] mx-auto">
+      <div className="grid md:grid-cols-2 gap-4 md:gap-5 items-stretch">
+        <img
+          src={image}
+          alt={imageAlt}
+          className="w-full h-auto rounded-xl md:rounded-2xl block"
+        />
+
+        <aside
+          className="rounded-xl md:rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 md:p-4 flex flex-col min-h-0 h-full overflow-hidden"
+        >
+          <p className="text-[#e8702a] text-xs md:text-sm font-medium tracking-wide">
+            {name}
+          </p>
+          <p className="mt-2 text-[13px] md:text-sm text-white/55 leading-[1.6]">{lead}</p>
+
+          <div className="mt-2.5 md:mt-3 space-y-2.5 flex-1 min-h-0 overflow-y-auto pr-0.5">
+            {highlights.map((item) => (
+              <div key={item.label}>
+                <span className="text-[#e8702a] text-[10px] font-medium tracking-wide uppercase">
+                  {item.label}
+                </span>
+                <h3 className="mt-0.5 text-white/90 text-[13px] font-medium leading-snug">
+                  {item.title}
+                </h3>
+                <p className="mt-0.5 text-white/45 text-xs leading-relaxed">{item.body}</p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-2.5 pt-2.5 border-t border-white/10 text-[10px] md:text-[11px] text-white/35 leading-snug shrink-0">
+            {captions.join(' · ')}
+          </p>
+        </aside>
+      </div>
+    </div>
+  )
+}
 
 export function AiIpSection() {
   const { t } = useLocale()
@@ -31,45 +85,22 @@ export function AiIpSection() {
           </ul>
         </ScrollReveal>
 
-        <ScrollReveal delay={100}>
-          <div className="w-full md:w-[88%] max-w-[960px] mx-auto">
-            <div className="grid md:grid-cols-2 gap-4 md:gap-5 items-stretch">
-              <img
-                src={SHOWCASE_IMAGE}
-                alt={s.imageAlt}
-                className="w-full h-auto rounded-xl md:rounded-2xl block"
+        <div className="space-y-10 md:space-y-12">
+          {s.showcases.map((showcase, i) => (
+            <ScrollReveal key={showcase.name} delay={100 + i * 80}>
+              <div className={i > 0 ? 'border-t border-white/10 pt-10 md:pt-12' : undefined}>
+                <ShowcaseRow
+                name={showcase.name}
+                lead={showcase.lead}
+                highlights={showcase.highlights}
+                captions={showcase.captions}
+                imageAlt={showcase.imageAlt}
+                image={AI_IP_IMAGES[i] ?? AI_IP_IMAGES[0]}
               />
-
-              <aside
-                className="rounded-xl md:rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 md:p-4 flex flex-col min-h-0 h-full overflow-hidden"
-              >
-                <p className="text-[13px] md:text-sm text-white/55 leading-[1.6]">
-                  {s.lead}
-                </p>
-
-                <div className="mt-2.5 md:mt-3 space-y-2.5 flex-1 min-h-0 overflow-y-auto pr-0.5">
-                  {s.highlights.map((item) => (
-                    <div key={item.label}>
-                      <span className="text-[#e8702a] text-[10px] font-medium tracking-wide uppercase">
-                        {item.label}
-                      </span>
-                      <h3 className="mt-0.5 text-white/90 text-[13px] font-medium leading-snug">
-                        {item.title}
-                      </h3>
-                      <p className="mt-0.5 text-white/45 text-xs leading-relaxed">
-                        {item.body}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                <p className="mt-2.5 pt-2.5 border-t border-white/10 text-[10px] md:text-[11px] text-white/35 leading-snug shrink-0">
-                  {s.captions.join(' · ')}
-                </p>
-              </aside>
-            </div>
-          </div>
-        </ScrollReveal>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
       </div>
     </section>
   )

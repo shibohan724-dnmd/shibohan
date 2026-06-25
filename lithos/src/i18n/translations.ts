@@ -72,33 +72,58 @@ export const translations = {
     },
     aiIp: {
       italic: 'AI Practice',
-      title: 'AI 生成 IP · 咖啡人 Coffy',
-      subtitle: '用 AI 完成角色设定、三视图与周边延展，展示从概念到品牌物料的完整链路',
-      lead:
-        '这是我在练习中借助 AI 工具独立完成的咖啡品牌 IP 案例「Coffy」。从角色气质、造型结构到表情与角度一致性，再到工牌、杯套、胶带等周边物料，全程用生成式 AI 辅助构思与出图，并整理成可展示的 IP 全案版面，体现对 AI 工具的熟练运用与落地意识。',
+      title: 'AI 生成 IP 案例',
+      subtitle: '借助 AI 完成角色气质、姿态延展与品牌叙事，探索可落地的 IP 设计练习',
       tools: ['即梦', 'ChatGPT', 'Photoshop', 'Figma'],
-      highlights: [
+      showcases: [
         {
-          label: '01',
-          title: '角色设定与气质',
-          body: '以咖啡杯为原型，提炼可爱、亲和的品牌人格，统一配色与材质（陶瓷杯 + 咖啡液），让 IP 一眼可识别。',
+          name: 'Coffy · 咖啡人',
+          lead:
+            '「Coffy」是我用 AI 完成的咖啡品牌 IP 练习：以咖啡杯为原型，从角色气质、三视图到工牌、杯套、胶带等周边物料，整理成可展示的 IP 全案版面。',
+          highlights: [
+            {
+              label: '01',
+              title: '角色设定与气质',
+              body: '可爱、亲和的咖啡杯形象，统一配色与材质，让 IP 一眼可识别。',
+            },
+            {
+              label: '02',
+              title: '多角度与表情',
+              body: '正视、侧视、背视及多种表情，造型比例与风格稳定，便于后续延展。',
+            },
+            {
+              label: '03',
+              title: '周边物料延展',
+              body: '工牌、徽章、杯套、胶带、立牌等场景应用，形成完整品牌触点。',
+            },
+          ],
+          imageAlt: 'Coffy 咖啡人 IP 全案',
+          captions: ['主形象与品牌命名', '正视图 · 多角度与表情', '系列周边应用物料'],
         },
         {
-          label: '02',
-          title: '多角度与表情一致性',
-          body: '输出正视、侧视、背视及多种表情，保证造型比例与风格稳定，满足后续动画、建模或延展需求。',
+          name: 'Slowy · 咖啡树懒',
+          lead:
+            '「Slowy」是一只头顶咖啡杯、浑身带着咖啡香气的小树懒。它不急着赶路，却总在帮人拾起生活里那些被轻轻错过的幸福——漂在水面放空、窝在云朵上小睡、捧杯吸一口热气的片刻。',
+          highlights: [
+            {
+              label: '01',
+              title: '松弛感与 Chill 气质',
+              body: '毛绒柔软、表情丰富，漂在水面、躺云休息，自带年轻人认同的慢生活姿态。',
+            },
+            {
+              label: '02',
+              title: '情绪共鸣',
+              body: '慢一点也没关系，不必时刻高效也值得被喜欢；咖啡是给自己留出时间的仪式。',
+            },
+            {
+              label: '03',
+              title: '名字 · Slowy',
+              body: 'Sloth + Slow：总是慢半拍，却从不迟到属于自己的那份幸福。',
+            },
+          ],
+          imageAlt: 'Slowy 咖啡树懒 IP 多角度展示',
+          captions: ['站姿多角度', '喝咖啡 · Sloffee', '云朵躺平 · 泡澡 · 游戏'],
         },
-        {
-          label: '03',
-          title: '周边物料延展',
-          body: '将 IP 应用于工牌、徽章、杯套、胶带、立牌等场景，形成从角色到品牌触点的完整展示。',
-        },
-      ],
-      imageAlt: 'Coffy 咖啡人 IP 全案：主形象、三视图与周边应用',
-      captions: [
-        '主形象与品牌命名',
-        '正视图 · 多角度与表情',
-        '系列周边应用物料',
       ],
     },
     footer: {
@@ -207,33 +232,58 @@ export const translations = {
     },
     aiIp: {
       italic: 'AI Practice',
-      title: 'AI-generated IP · Coffy the Coffee Mascot',
-      subtitle: 'Character design, turnarounds, and merch mockups—concept to brand touchpoints with AI',
-      lead:
-        'A practice IP case for a coffee brand mascot, “Coffy,” built with generative AI. From character tone and form to consistent expressions and angles, through badges, cup sleeves, and tape mockups—organized as a full IP presentation that shows fluent AI use and production-ready thinking.',
+      title: 'AI-generated IP cases',
+      subtitle: 'Character tone, poses, and brand stories—IP design practice with generative AI',
       tools: ['Jimeng', 'ChatGPT', 'Photoshop', 'Figma'],
-      highlights: [
+      showcases: [
         {
-          label: '01',
-          title: 'Character & tone',
-          body: 'Coffee-cup mascot with a friendly, cute personality; unified palette and materials (ceramic cup + coffee) for instant recognition.',
+          name: 'Coffy · Coffee Mascot',
+          lead:
+            '“Coffy” is a coffee-brand IP practice built with AI—from character tone and turnarounds to badges, cup sleeves, and tape mockups in one presentation.',
+          highlights: [
+            {
+              label: '01',
+              title: 'Character & tone',
+              body: 'Friendly coffee-cup mascot with unified palette and materials for instant recognition.',
+            },
+            {
+              label: '02',
+              title: 'Angles & expressions',
+              body: 'Front, side, back views and varied expressions—stable proportions for extension work.',
+            },
+            {
+              label: '03',
+              title: 'Merch extension',
+              body: 'Badges, lanyards, cup sleeves, tape, and signage—full brand touchpoints.',
+            },
+          ],
+          imageAlt: 'Coffy coffee mascot IP case',
+          captions: ['Hero & naming', 'Turnarounds · expressions', 'Peripheral mockups'],
         },
         {
-          label: '02',
-          title: 'Turnarounds & expressions',
-          body: 'Front, side, back views plus varied expressions with stable proportions and style—ready for animation or 3D follow-up.',
+          name: 'Slowy · Coffee Sloth',
+          lead:
+            '“Slowy” is a coffee-scented sloth with a cup on its head—collecting small happy moments: floating on water, napping on clouds, sipping a warm cup.',
+          highlights: [
+            {
+              label: '01',
+              title: 'Chill & relaxed tone',
+              body: 'Soft fur, rich expressions—floating, lounging, the slow-life mood young audiences relate to.',
+            },
+            {
+              label: '02',
+              title: 'Emotional resonance',
+              body: 'It’s okay to slow down; you don’t have to be efficient to be loved. Coffee is time for yourself.',
+            },
+            {
+              label: '03',
+              title: 'Name · Slowy',
+              body: 'Sloth + Slow—always a beat behind, never late to your own happiness.',
+            },
+          ],
+          imageAlt: 'Slowy coffee sloth IP turnarounds',
+          captions: ['Standing angles', 'Coffee · Sloffee', 'Cloud rest · bath · gaming'],
         },
-        {
-          label: '03',
-          title: 'Merch extension',
-          body: 'Applied across badges, lanyards, cup sleeves, tape, and signage—from character to real brand touchpoints.',
-        },
-      ],
-      imageAlt: 'Coffy IP case: hero, turnarounds, and peripheral applications',
-      captions: [
-        'Hero & brand naming',
-        'Turnarounds · angles & expressions',
-        'Peripheral application mockups',
       ],
     },
     footer: {
