@@ -893,13 +893,14 @@ strong { color: var(--text); font-weight: 600; }
 }
 
 .browser__view {
-  max-height: 560px;
-  overflow-y: auto;
   background: #fff;
-  scrollbar-width: thin;
 }
 
-.browser__view img { width: 100%; }
+.browser__view img {
+  width: 100%;
+  display: block;
+}
+
 .browser__hint {
   font-size: 12px;
   color: var(--text-faint);
@@ -994,6 +995,84 @@ strong { color: var(--text); font-weight: 600; }
   background: var(--card);
 }
 
+.shotpair img { width: 100%; display: block; }
+
+/* KOVA: dual-column full-page strips */
+.page-frame {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  margin-top: 40px;
+}
+
+.page-frame .browser__bar { border-bottom: 1px solid var(--line); }
+
+body[data-case-page="work3"] .page-block .page-frame {
+  width: 80%;
+  margin-inline: auto;
+}
+
+.page-pair { margin-top: 40px; }
+
+.page-pair__heads {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 120px;
+  margin-bottom: 28px;
+}
+
+.page-pair__head h3 {
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 400;
+  color: #fff;
+}
+
+.page-pair__head .muted {
+  display: block;
+  font-family: var(--font-en);
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-top: 6px;
+}
+
+.page-pair__desc {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-top: 12px;
+}
+
+.page-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 120px;
+  align-items: start;
+}
+
+.page-duo--full figure {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+}
+
+.page-duo figure {
+  overflow: hidden;
+  background: #fff;
+}
+
+.page-duo figure + figure {
+  border-left: none;
+}
+
+.page-duo img {
+  width: 100%;
+  display: block;
+}
+
 .feature__media .review-card {
   width: 300px;
   background: #fff;
@@ -1068,7 +1147,8 @@ strong { color: var(--text); font-weight: 600; }
   .hero__meta,
   .case-hero__meta { grid-template-columns: 1fr 1fr; }
   .shotpair { grid-template-columns: 1fr; }
-  .browser__view { max-height: 420px; }
+  .page-pair__heads { grid-template-columns: 1fr; }
+  .page-duo { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

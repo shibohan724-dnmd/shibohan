@@ -64,8 +64,8 @@ export const translations = {
           tags: ['品牌官网', '电商页面', '2026'],
         },
         {
-          title: '秉坤订货平台 B 端',
-          desc: '快消连锁品牌订货管理后台，涵盖经营看板、订单处理、长表单与企业级组件规范，兼顾复杂业务与操作效率。',
+          title: '秉坤后台设计及规范',
+          desc: 'PEKON 秉坤 B 端订货管理后台：设计目标、交互原则、经营看板、订单详情与组件规范，兼顾复杂业务与清晰操作体验。',
           tags: ['后台 UI', '企业系统', '2024'],
         },
       ],
@@ -248,8 +248,8 @@ export const translations = {
           tags: ['Brand Site', 'E-commerce', '2026'],
         },
         {
-          title: 'Pekon B-side Admin',
-          desc: 'Ordering admin for FMCG chains—dashboards, order flows, long forms, and enterprise components for dense B-side work.',
+          title: 'Pekon Admin & Guidelines',
+          desc: 'PEKON B-side ordering admin—design goals, interaction principles, dashboards, order detail, and component guidelines for dense enterprise UI.',
           tags: ['Admin UI', 'Enterprise', '2024'],
         },
       ],

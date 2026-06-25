@@ -111,24 +111,21 @@ window.LithosCaseStrings.work3 = {
 
     'pages.eyebrow': 'Key Pages',
     'pages.title': '核心页面',
-    'pages.lead': '三个关键页面构成完整体验闭环。下面是真实设计稿，可在窗口内滚动浏览整页。',
+    'pages.lead': '三个关键页面构成完整体验闭环。下面是真实设计稿整页展开，随页面滚动一览全貌。',
     'pages.1.title': '① 品牌首页',
     'pages.1.url': 'kova.coffee',
     'pages.1.desc':
       '以咖啡机为主角的 Hero 开场，依次铺陈三种冷萃模式、品类导航、用户口碑、「在家也能当咖啡师」的生活方式，最后用产品家族网格收口。',
-    'pages.1.hint': '↑ 在窗口内向下滚动，查看完整首页',
     'img.pages.1': 'KOVA 首页整页设计稿',
     'pages.2.title': '② 全品类商城',
     'pages.2.url': 'kova.coffee/shop',
     'pages.2.desc':
       '机器、胶囊、糖浆、礼盒、配件分区陈列，按烘焙度（Light / Medium / Dark / Decaf）筛选，统一的产品卡承载价格、风味与「单次 / 订阅」选项。',
-    'pages.2.hint': '↑ 在窗口内向下滚动，查看完整商城',
     'img.pages.2': 'KOVA 商城整页设计稿',
     'pages.3.title': '③ 商品详情 & 下单',
     'pages.3.url': 'kova.coffee/coffee/ritual',
     'pages.3.desc':
       '以 Ritual 为例：顶部完成「选烘焙度 → 单次或订阅 → 加购」的决策，下方用「种植 → 烘焙 → 冲煮 → 校准」的溯源叙事建立信任，再以真实评价（4.9 / 14 条）收尾。',
-    'pages.3.hint': '↑ 在窗口内向下滚动，查看完整商品页',
     'img.pages.3': 'KOVA 商品详情下单页整页设计稿',
 
     'highlight1.eyebrow': 'Highlight 01',
@@ -295,24 +292,21 @@ window.LithosCaseStrings.work3 = {
     'pages.eyebrow': 'Key Pages',
     'pages.title': 'Key pages',
     'pages.lead':
-      'Three critical pages form the full experience loop. Full-page design comps below—scroll within each frame to browse.',
+      'Three critical pages form the full experience loop. Full-page comps below—scroll the case study to see each design in full.',
     'pages.1.title': '① Brand homepage',
     'pages.1.url': 'kova.coffee',
     'pages.1.desc':
       'Machine-led hero opening, followed by three cold-brew modes, category navigation, customer reviews, a "be your own barista at home" lifestyle story, and a product-family grid to close.',
-    'pages.1.hint': '↑ Scroll down in the frame to view the full homepage',
     'img.pages.1': 'KOVA homepage full-page design',
     'pages.2.title': '② Full-category store',
     'pages.2.url': 'kova.coffee/shop',
     'pages.2.desc':
       'Machines, capsules, syrups, gift sets, and accessories in dedicated zones, filterable by roast (Light / Medium / Dark / Decaf). Unified product cards show price, flavor notes, and one-time / subscription options.',
-    'pages.2.hint': '↑ Scroll down in the frame to view the full store',
     'img.pages.2': 'KOVA store full-page design',
     'pages.3.title': '③ Product detail & checkout',
     'pages.3.url': 'kova.coffee/coffee/ritual',
     'pages.3.desc':
       'Using Ritual as an example: top section completes roast → one-time or subscription → add to cart; below, a farm-to-cup story (grow → roast → brew → calibrate) builds trust, closed with real reviews (4.9 / 14).',
-    'pages.3.hint': '↑ Scroll down in the frame to view the full product page',
     'img.pages.3': 'KOVA product detail full-page design',
 
     'highlight1.eyebrow': 'Highlight 01',
