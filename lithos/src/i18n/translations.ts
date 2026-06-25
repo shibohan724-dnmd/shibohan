@@ -59,9 +59,9 @@ export const translations = {
           tags: ['微信小程序', 'UI 设计', '2025'],
         },
         {
-          title: 'KOVA Coffee 品牌官网',
-          desc: '冷萃咖啡机品牌官网与电商页面，从品牌叙事、产品展示到订阅复购，构建完整的线上购买与会员体验。',
-          tags: ['品牌官网', '电商页面', '2026'],
+          title: 'BOX RABBIT · 潮玩 IP 角色设计',
+          desc: '潮玩风格灰色兔子 IP「BOX RABBIT」，坐于纸箱中呈现柔软毛绒质感。项目包含多视角 3D 定妆、漫画分镜与品牌字标延展，探索潮玩角色从造型到视觉识别的完整呈现。',
+          tags: ['IP 设计', '潮玩', '3D 角色', '2026'],
         },
         {
           title: '秉坤订货平台 B 端',
@@ -219,9 +219,9 @@ export const translations = {
           tags: ['WeChat Mini Program', 'UI Design', '2025'],
         },
         {
-          title: 'KOVA Coffee Website',
-          desc: 'Brand site and e-commerce for a cold-brew coffee brand—from storytelling and PDP to subscription and member experience.',
-          tags: ['Brand Site', 'E-commerce', '2026'],
+          title: 'BOX RABBIT · Designer Toy IP',
+          desc: 'Trendy-toy grey rabbit IP "BOX RABBIT" nestled in a cardboard box with soft plush textures. Multi-angle 3D renders, comic panels, and logo extensions explore full character presentation from sculpt to visual identity.',
+          tags: ['IP Design', 'Designer Toy', '3D Character', '2026'],
         },
         {
           title: 'Pekon B-side Admin',
