@@ -34,10 +34,8 @@ export function AiIpSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={100}>
-          <div className="w-full md:w-[80%] max-w-[1000px] mx-auto">
-            <div
-              className="grid md:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] gap-5 md:gap-6 items-stretch"
-            >
+          <div className="max-w-[min(100%,720px)] mx-auto">
+            <div className="grid md:grid-cols-2 gap-4 md:gap-5 items-stretch">
               <figure
                 className="rounded-xl md:rounded-2xl border border-white/10 overflow-hidden bg-white/[0.02] w-full"
                 style={{ aspectRatio: SHOWCASE_ASPECT }}
@@ -50,29 +48,29 @@ export function AiIpSection() {
               </figure>
 
               <aside
-                className="rounded-xl md:rounded-2xl border border-white/10 bg-white/[0.03] p-4 md:p-5 flex flex-col min-h-0 h-full overflow-hidden"
+                className="rounded-xl md:rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 md:p-4 flex flex-col min-h-0 h-full overflow-hidden"
               >
-                <p className="text-sm text-white/55 leading-[1.65]">
+                <p className="text-[13px] md:text-sm text-white/55 leading-[1.6]">
                   {s.lead}
                 </p>
 
-                <div className="mt-3 md:mt-4 space-y-3 flex-1 min-h-0 overflow-y-auto pr-1">
+                <div className="mt-2.5 md:mt-3 space-y-2.5 flex-1 min-h-0 overflow-y-auto pr-0.5">
                   {s.highlights.map((item) => (
                     <div key={item.label}>
-                      <span className="text-[#e8702a] text-[10px] md:text-xs font-medium tracking-wide uppercase">
+                      <span className="text-[#e8702a] text-[10px] font-medium tracking-wide uppercase">
                         {item.label}
                       </span>
-                      <h3 className="mt-1 text-white/90 text-sm font-medium leading-snug">
+                      <h3 className="mt-0.5 text-white/90 text-[13px] font-medium leading-snug">
                         {item.title}
                       </h3>
-                      <p className="mt-0.5 text-white/45 text-[13px] leading-relaxed">
+                      <p className="mt-0.5 text-white/45 text-xs leading-relaxed">
                         {item.body}
                       </p>
                     </div>
                   ))}
                 </div>
 
-                <p className="mt-3 pt-3 border-t border-white/10 text-[11px] text-white/35 leading-snug shrink-0">
+                <p className="mt-2.5 pt-2.5 border-t border-white/10 text-[10px] md:text-[11px] text-white/35 leading-snug shrink-0">
                   {s.captions.join(' · ')}
                 </p>
               </aside>
