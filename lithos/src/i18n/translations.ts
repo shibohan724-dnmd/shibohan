@@ -59,9 +59,9 @@ export const translations = {
           tags: ['微信小程序', 'UI 设计', '2025'],
         },
         {
-          title: 'BOX RABBIT · 潮玩 IP 角色设计',
-          desc: '潮玩风格灰色兔子 IP「BOX RABBIT」，坐于纸箱中呈现柔软毛绒质感。项目包含多视角 3D 定妆、漫画分镜与品牌字标延展，探索潮玩角色从造型到视觉识别的完整呈现。',
-          tags: ['IP 设计', '潮玩', '3D 角色', '2026'],
+          title: 'KOVA Coffee 品牌官网',
+          desc: '冷萃咖啡机品牌官网与电商页面，从品牌叙事、产品展示到订阅复购，构建完整的线上购买与会员体验。',
+          tags: ['品牌官网', '电商页面', '2026'],
         },
         {
           title: '秉坤订货平台 B 端',
@@ -123,6 +123,30 @@ export const translations = {
           ],
           imageAlt: 'Slowy 咖啡树懒 IP 多角度展示',
           captions: ['站姿多角度', '喝咖啡 · Sloffee', '云朵躺平 · 泡澡 · 游戏'],
+        },
+        {
+          name: 'BOX RABBIT · 纸箱兔',
+          lead:
+            '「BOX RABBIT」是一只坐在棕色纸箱里的灰色毛绒兔子——纸箱是家的符号，也是品牌命名的视觉锚点。借助 AI 完成多视角 3D 定妆、漫画分镜与「BOX」「RABBIT」动感字标，探索潮玩 IP 的可识别性与延展性。',
+          highlights: [
+            {
+              label: '01',
+              title: '纸箱即角色符号',
+              body: '兔子与纸箱一体，「盒子 + 兔子」写进名字，记忆点集中、便于周边与陈列延展。',
+            },
+            {
+              label: '02',
+              title: '毛绒潮玩质感',
+              body: '灰毛绒、短耳、圆眼与蓬松尾巴，3D 定妆具备实体潮玩的可触摸感与收藏感。',
+            },
+            {
+              label: '03',
+              title: '漫画字标延展',
+              body: '黑白分镜拆出「BOX」「RABBIT」动感字标，兼顾陈列级精致与社交媒体传播活力。',
+            },
+          ],
+          imageAlt: 'BOX RABBIT 潮玩 IP 全案展示',
+          captions: ['多视角 3D 定妆', '漫画分镜 · 动感字标', '正背面 · 陈列参考'],
         },
       ],
     },
@@ -219,9 +243,9 @@ export const translations = {
           tags: ['WeChat Mini Program', 'UI Design', '2025'],
         },
         {
-          title: 'BOX RABBIT · Designer Toy IP',
-          desc: 'Trendy-toy grey rabbit IP "BOX RABBIT" nestled in a cardboard box with soft plush textures. Multi-angle 3D renders, comic panels, and logo extensions explore full character presentation from sculpt to visual identity.',
-          tags: ['IP Design', 'Designer Toy', '3D Character', '2026'],
+          title: 'KOVA Coffee Website',
+          desc: 'Brand site and e-commerce for a cold-brew coffee brand—from storytelling and PDP to subscription and member experience.',
+          tags: ['Brand Site', 'E-commerce', '2026'],
         },
         {
           title: 'Pekon B-side Admin',
@@ -283,6 +307,30 @@ export const translations = {
           ],
           imageAlt: 'Slowy coffee sloth IP turnarounds',
           captions: ['Standing angles', 'Coffee · Sloffee', 'Cloud rest · bath · gaming'],
+        },
+        {
+          name: 'BOX RABBIT · Box Bunny',
+          lead:
+            '"BOX RABBIT" is a soft grey plush rabbit sitting in a brown cardboard box—the box is home and the visual anchor for the name. Built with AI: multi-angle 3D renders, comic panels, and dynamic "BOX" / "RABBIT" marks exploring trendy-toy recognizability and extension.',
+          highlights: [
+            {
+              label: '01',
+              title: 'Box as character symbol',
+              body: 'Rabbit and box are one—"box" + "rabbit" in the name keeps the memory point tight for merch and display.',
+            },
+            {
+              label: '02',
+              title: 'Plush toy texture',
+              body: 'Grey plush, short ears, round eyes, fluffy tail—3D renders feel tactile and collectible like physical toys.',
+            },
+            {
+              label: '03',
+              title: 'Comic logo extension',
+              body: 'B&W panels split "BOX" and "RABBIT" into dynamic marks—display polish plus social-media energy.',
+            },
+          ],
+          imageAlt: 'BOX RABBIT designer toy IP presentation',
+          captions: ['Multi-angle 3D renders', 'Comic panels · dynamic logos', 'Front/back · display reference'],
         },
       ],
     },
