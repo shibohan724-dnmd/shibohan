@@ -73,7 +73,9 @@ export const translations = {
     aiIp: {
       italic: 'AI Practice',
       title: 'AI 生成 IP 案例',
-      subtitle: '借助 AI 完成角色气质、姿态延展与品牌叙事，探索可落地的 IP 设计练习',
+      subtitle: '借助 AI 完成的 IP 设计练习——默认简略露出，感兴趣可点开查看完整案例',
+      expandLabel: '展开完整案例',
+      collapseLabel: '收起',
       tools: ['即梦', 'ChatGPT', 'Photoshop', 'Figma'],
       showcases: [
         {
@@ -257,7 +259,9 @@ export const translations = {
     aiIp: {
       italic: 'AI Practice',
       title: 'AI-generated IP cases',
-      subtitle: 'Character tone, poses, and brand stories—IP design practice with generative AI',
+      subtitle: 'AI IP design practice—peek by default; tap any case to see the full story',
+      expandLabel: 'View full case',
+      collapseLabel: 'Collapse',
       tools: ['Jimeng', 'ChatGPT', 'Photoshop', 'Figma'],
       showcases: [
         {
