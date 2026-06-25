@@ -3,8 +3,6 @@ import { SectionHeading } from './SectionHeading'
 import { ScrollReveal } from './ScrollReveal'
 
 const SHOWCASE_IMAGE = '/assets/coffy-ip-showcase.png'
-/** 原图比例 803×1024，用于锁定展示区高度 */
-const SHOWCASE_ASPECT = '803 / 1024'
 
 export function AiIpSection() {
   const { t } = useLocale()
@@ -34,18 +32,13 @@ export function AiIpSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={100}>
-          <div className="max-w-[min(100%,720px)] mx-auto">
+          <div className="w-full md:w-[88%] max-w-[960px] mx-auto">
             <div className="grid md:grid-cols-2 gap-4 md:gap-5 items-stretch">
-              <figure
-                className="rounded-xl md:rounded-2xl border border-white/10 overflow-hidden bg-white/[0.02] w-full"
-                style={{ aspectRatio: SHOWCASE_ASPECT }}
-              >
-                <img
-                  src={SHOWCASE_IMAGE}
-                  alt={s.imageAlt}
-                  className="w-full h-full object-contain object-top block"
-                />
-              </figure>
+              <img
+                src={SHOWCASE_IMAGE}
+                alt={s.imageAlt}
+                className="w-full h-auto rounded-xl md:rounded-2xl block"
+              />
 
               <aside
                 className="rounded-xl md:rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 md:p-4 flex flex-col min-h-0 h-full overflow-hidden"
