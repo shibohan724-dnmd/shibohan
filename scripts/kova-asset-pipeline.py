@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
-"""Replace KOVA case3 assets from Figma exports and scrub cumulus branding."""
+"""KOVA case3 assets from Figma exports — only erase small cumulus wordmarks."""
 from __future__ import annotations
 
-import os
-import shutil
 from pathlib import Path
 
 import cv2
@@ -20,20 +18,10 @@ TARGET_W = 1400
 JPEG_Q = 95
 
 
-def ensure_dirs() -> None:
-    CASE3.mkdir(parents=True, exist_ok=True)
-    CASE3_PUB.mkdir(parents=True, exist_ok=True)
-
-
 def pil_to_bgr(im: Image.Image) -> np.ndarray:
     if im.mode != "RGB":
         im = im.convert("RGB")
-    arr = np.array(im)
-    return cv2.cvtColor(arr, cv2.COLOR_RGB2BGR)
-
-
-def bgr_to_pil(img: np.ndarray) -> Image.Image:
-    return Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+    return cv2.cvtColor(np.array(im), cv2.COLOR_RGB2BGR)
 
 
 def save_jpeg(img: np.ndarray, path: Path) -> None:
@@ -52,16 +40,135 @@ def resize_width_bgr(img: np.ndarray, width: int = TARGET_W) -> np.ndarray:
     return cv2.resize(img, (width, nh), interpolation=cv2.INTER_LANCZOS4)
 
 
-def inpaint_mask(img: np.ndarray, mask: np.ndarray, radius: int = 7) -> np.ndarray:
-    mask = cv2.dilate(mask, np.ones((3, 3), np.uint8), iterations=2)
-    return cv2.inpaint(img, mask, radius, cv2.INPAINT_NS)
+def inpaint_small(img: np.ndarray, mask: np.ndarray, radius: int = 3) -> np.ndarray:
+    if mask.max() == 0:
+        return img
+    mask = cv2.dilate(mask, np.ones((3, 3), np.uint8), iterations=1)
+    return cv2.inpaint(img, mask, radius, cv2.INPAINT_TELEA)
 
 
-def rect_mask(shape, boxes):
-    mask = np.zeros(shape[:2], np.uint8)
-    for x, y, w, h in boxes:
-        mask[y : y + h, x : x + w] = 255
+def component_mask(
+    section: np.ndarray,
+    pixel_cond: np.ndarray,
+    min_area: int,
+    max_area: int,
+    max_w: int,
+    max_h: int,
+) -> np.ndarray:
+    """Mask only small connected regions (wordmark-sized), not whole product faces."""
+    binary = (pixel_cond.astype(np.uint8) * 255)
+    binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, np.ones((2, 2), np.uint8))
+    n, labels, stats, _ = cv2.connectedComponentsWithStats(binary, connectivity=8)
+    mask = np.zeros(section.shape[:2], np.uint8)
+    for i in range(1, n):
+        area = stats[i, cv2.CC_STAT_AREA]
+        w = stats[i, cv2.CC_STAT_WIDTH]
+        h = stats[i, cv2.CC_STAT_HEIGHT]
+        if min_area <= area <= max_area and w <= max_w and h <= max_h:
+            mask[labels == i] = 255
     return mask
+
+
+def erase_product_grid_logos(
+    img: np.ndarray,
+    y0: int,
+    y1: int,
+    rows: int = 2,
+    cols: int = 3,
+) -> np.ndarray:
+    """Erase cumulus on box sides + small can labels within product photo cells."""
+    w = img.shape[1]
+    col_w = w // cols
+    band_h = (y1 - y0) // rows
+    boxes: list[tuple[int, int, int, int]] = []
+    for r in range(rows):
+        for c in range(cols):
+            x0 = c * col_w
+            cy = y0 + r * band_h + int(band_h * 0.38)
+            # brown box side wordmark — tight strip on right face only
+            boxes.append((x0 + int(col_w * 0.62), cy, int(col_w * 0.16), int(band_h * 0.06)))
+            # small logo on standalone can label
+            boxes.append((x0 + int(col_w * 0.08), cy + int(band_h * 0.24), int(col_w * 0.14), int(band_h * 0.05)))
+            # cans inside box
+            boxes.append((x0 + int(col_w * 0.40), cy + int(band_h * 0.12), int(col_w * 0.10), int(band_h * 0.05)))
+    return erase_boxes(img, boxes)
+
+
+def stamp_patch(img: np.ndarray, x: int, y: int, w: int, h: int, offset_up: int) -> None:
+    y_src = y - offset_up - h
+    if y_src < 0:
+        return
+    img[y : y + h, x : x + w] = img[y_src : y_src + h, x : x + w]
+
+
+def erase_tumbler_logos(img: np.ndarray, y0: int, y1: int, cols: int = 3) -> np.ndarray:
+    w = img.shape[1]
+    col_w = w // cols
+    band = y1 - y0
+    for c in range(cols):
+        x0 = c * col_w
+        col = img[y0:y1, x0 : x0 + col_w].copy()
+        gray = cv2.cvtColor(col, cv2.COLOR_BGR2GRAY)
+        photo_h = int(band * 0.62)
+        mask = np.zeros(col.shape[:2], np.uint8)
+        for y in range(photo_h):
+            row = gray[y]
+            if row.mean() > 205 and row.min() < 135:
+                mask[y, row < 135] = 255
+        col = inpaint_small(col, mask, radius=2)
+        img[y0:y1, x0 : x0 + col_w] = col
+    return img
+
+
+def erase_cumulus_wordmarks(section: np.ndarray) -> np.ndarray:
+    """Orange cumulus on syrup bottle labels only (small components)."""
+    gray = cv2.cvtColor(section, cv2.COLOR_BGR2GRAY)
+    hsv = cv2.cvtColor(section, cv2.COLOR_BGR2HSV)
+    orange = cv2.inRange(hsv, np.array([0, 50, 100]), np.array([28, 255, 255]))
+    orange |= cv2.inRange(hsv, np.array([160, 50, 100]), np.array([180, 255, 255]))
+    orange_on_label = orange & (gray > 90)
+    mask = component_mask(section, orange_on_label, min_area=40, max_area=2200, max_w=85, max_h=28)
+    return inpaint_small(section, mask, radius=3)
+
+
+def scrub_shop_page(img: np.ndarray) -> np.ndarray:
+    h = img.shape[0]
+    # coffee capsule grids (product photos only)
+    for y0, y1, rows in [
+        (int(h * 0.16), int(h * 0.28), 2),
+        (int(h * 0.28), int(h * 0.40), 2),
+        (int(h * 0.40), int(h * 0.52), 2),
+    ]:
+        img = erase_product_grid_logos(img, y0, y1, rows=rows, cols=3)
+    # bundles + syrups product rows
+    for y0, y1 in [
+        (int(h * 0.52), int(h * 0.64)),
+        (int(h * 0.64), int(h * 0.76)),
+    ]:
+        img = erase_product_grid_logos(img, y0, y1, rows=2, cols=3)
+        section = img[y0:y1].copy()
+        section = erase_cumulus_wordmarks(section)
+        img[y0:y1] = section
+    # tumblers
+    img = erase_tumbler_logos(img, int(h * 0.76), int(h * 0.86), cols=3)
+    return img
+
+
+def scrub_home_page(img: np.ndarray) -> np.ndarray:
+    h = img.shape[0]
+    img = erase_product_grid_logos(img, int(h * 0.58), int(h * 0.72), rows=2, cols=3)
+    return img
+
+
+def erase_boxes(img: np.ndarray, boxes: list[tuple[int, int, int, int]]) -> np.ndarray:
+    for x, y, w, h in boxes:
+        if x - w > 0:
+            img[y : y + h, x : x + w] = img[y : y + h, x - w : x]
+        else:
+            mask = np.zeros(img.shape[:2], np.uint8)
+            mask[y : y + h, x : x + w] = 255
+            img = inpaint_small(img, mask, radius=3)
+    return img
 
 
 def scale_boxes(boxes, sx: float, sy: float | None = None):
@@ -70,298 +177,40 @@ def scale_boxes(boxes, sx: float, sy: float | None = None):
     return [(int(x * sx), int(y * sy), int(w * sx), int(h * sy)) for x, y, w, h in boxes]
 
 
-def remove_brown_box_logos(img: np.ndarray, y0: int, y1: int) -> np.ndarray:
-    section = img[y0:y1].copy()
-    gray = cv2.cvtColor(section, cv2.COLOR_BGR2GRAY)
-    brown = (
-        (section[:, :, 2] > 45)
-        & (section[:, :, 1] < 155)
-        & (section[:, :, 0] < 135)
-    )
-    light = (gray > 150) & (gray < 245)
-    mask = (brown & light).astype(np.uint8) * 255
-    mask = cv2.dilate(mask, np.ones((7, 7), np.uint8), iterations=2)
-    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((9, 9), np.uint8))
-    section = cv2.inpaint(section, mask, 8, cv2.INPAINT_NS)
-    img[y0:y1] = section
-    return img
-
-
-def redraw_hero_copy(img: np.ndarray) -> np.ndarray:
-    h, w = img.shape[:2]
-    text_box = (24, int(h * 0.20), int(w * 0.40), int(h * 0.46))
-    x, y, bw, bh = text_box
-    mask = np.zeros(img.shape[:2], np.uint8)
-    mask[y : y + bh, x : x + bw] = 255
-    # also scrub faint ghost copy above headline
-    mask[int(h * 0.12) : y + bh, x : x + int(w * 0.46)] = 255
-    img = cv2.inpaint(img, mask, 12, cv2.INPAINT_NS)
-    pil = bgr_to_pil(img)
+def patch_hero_cumulus_word(img: np.ndarray, sx: float) -> np.ndarray:
+    """Only replace the word Cumulus in hero headline — rest of image untouched."""
+    # source coords on 3840px-wide 主页.png hero
+    boxes = scale_boxes([(118, 1180, 520, 110)], sx)
+    img = erase_boxes(img, boxes)
+    pil = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
     draw = ImageDraw.Draw(pil)
     try:
-        font_caps = ImageFont.truetype("/System/Library/Fonts/Supplemental/Helvetica.ttc", 16)
-        font_h1 = ImageFont.truetype("/System/Library/Fonts/Supplemental/Georgia.ttf", 54)
-        font_body = ImageFont.truetype("/System/Library/Fonts/Supplemental/Helvetica.ttc", 18)
-    except OSError:
-        font_caps = font_h1 = font_body = ImageFont.load_default()
-    draw.text((x + 10, y + 8), "SUMMER KICKOFF EVENT", fill=(210, 210, 210), font=font_caps)
-    draw.text((x + 10, y + 36), "Take up to 25% off", fill=(255, 255, 255), font=font_h1)
-    draw.text((x + 10, y + 96), "the KOVA Machine", fill=(255, 255, 255), font=font_h1)
-    draw.text(
-        (x + 10, y + 158),
-        "Cold brew, nitro and cold espresso on demand in under a minute.",
-        fill=(210, 210, 210),
-        font=font_body,
-    )
-    draw.text((x + 10, y + 182), "Try it risk-free for 30 days.", fill=(210, 210, 210), font=font_body)
-    return pil_to_bgr(pil)
-
-
-def scrub_machine_heading(img: np.ndarray) -> np.ndarray:
-    h, w = img.shape[0], img.shape[1]
-    # "The Cumulus Machine" heading band in shop page
-    y0, y1 = int(h * 0.075), int(h * 0.095)
-    mask = np.zeros(img.shape[:2], np.uint8)
-    mask[y0:y1, int(w * 0.04) : int(w * 0.35)] = 255
-    img = cv2.inpaint(img, mask, 8, cv2.INPAINT_NS)
-    pil = bgr_to_pil(img)
-    draw = ImageDraw.Draw(pil)
-    try:
-        font = ImageFont.truetype("/System/Library/Fonts/Supplemental/Georgia.ttf", 46)
+        font = ImageFont.truetype("/System/Library/Fonts/Supplemental/Georgia.ttf", int(54 * sx))
     except OSError:
         font = ImageFont.load_default()
-    draw.text((int(w * 0.04), y0 - 6), "The KOVA Machine", fill=(45, 30, 22), font=font)
-    return pil_to_bgr(pil)
+    x, y, _, _ = boxes[0]
+    draw.text((x, y + int(8 * sx)), "KOVA", fill=(255, 255, 255), font=font)
+    return cv2.cvtColor(np.array(pil), cv2.COLOR_RGB2BGR)
 
 
-def remove_orange_label_logos(img: np.ndarray, y0: int, y1: int) -> np.ndarray:
-    section = img[y0:y1].copy()
-    hsv = cv2.cvtColor(section, cv2.COLOR_BGR2HSV)
-    # reddish-orange cumulus wordmark on syrup labels
-    lower = np.array([0, 40, 120])
-    upper = np.array([25, 255, 255])
-    mask1 = cv2.inRange(hsv, lower, upper)
-    lower2 = np.array([160, 40, 120])
-    upper2 = np.array([180, 255, 255])
-    mask2 = cv2.inRange(hsv, lower2, upper2)
-    mask = cv2.bitwise_or(mask1, mask2)
-    mask = cv2.dilate(mask, np.ones((3, 3), np.uint8), iterations=1)
-    section = cv2.inpaint(section, mask, 5, cv2.INPAINT_NS)
-    img[y0:y1] = section
-    return img
-
-
-def replace_text_region(img: np.ndarray, box, replacement: str, font_scale=1.0, color=(255, 255, 255)):
-    x, y, w, h = box
-    patch = img[y : y + h, x : x + w].copy()
-    patch = cv2.inpaint(
-        patch,
-        np.ones((h, w), np.uint8) * 255,
-        5,
-        cv2.INPAINT_NS,
-    )
-    img[y : y + h, x : x + w] = patch
-    pil = bgr_to_pil(img)
+def patch_shop_machine_title(img: np.ndarray, sx: float) -> np.ndarray:
+    boxes = scale_boxes([(150, 1980, 620, 90)], sx)
+    img = erase_boxes(img, boxes)
+    pil = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
     draw = ImageDraw.Draw(pil)
     try:
-        font = ImageFont.truetype("/System/Library/Fonts/Supplemental/Georgia.ttf", int(34 * font_scale))
+        font = ImageFont.truetype("/System/Library/Fonts/Supplemental/Georgia.ttf", int(46 * sx))
     except OSError:
         font = ImageFont.load_default()
-    draw.text((x, y + int(h * 0.15)), replacement, fill=color, font=font)
-    return pil_to_bgr(pil)
+    x, y, _, _ = boxes[0]
+    draw.text((x, y), "The KOVA Machine", fill=(45, 30, 22), font=font)
+    return cv2.cvtColor(np.array(pil), cv2.COLOR_RGB2BGR)
 
 
-def process_home_full() -> np.ndarray:
-    src = pil_to_bgr(Image.open(KOVA / "主页.png"))
-    img = resize_width_bgr(src)
-    sx = TARGET_W / src.shape[1]
-    h = img.shape[0]
-
-    # Hero top viewport
-    top_h = int(h * 0.14)
-    hero = img[:top_h].copy()
-    hero = inpaint_mask(
-        hero,
-        rect_mask(hero.shape, scale_boxes([(0, 0, 3840, 72)], sx)),
-    )
-    img[:top_h] = redraw_hero_copy(hero)
-
-    # Three brews small labels + link text band
-    img = remove_brown_box_logos(img, int(h * 0.18), int(h * 0.28))
-    img = inpaint_mask(
-        img,
-        rect_mask(img.shape, [(int(TARGET_W * 0.04), int(h * 0.255), int(TARGET_W * 0.35), int(h * 0.015))]),
-    )
-
-    # Product grid boxes + cans
-    img = remove_brown_box_logos(img, int(h * 0.58), int(h * 0.72))
-
-    # Bottom feature headline band
-    img = inpaint_mask(
-        img,
-        rect_mask(
-            img.shape,
-            [(int(TARGET_W * 0.04), int(h * 0.84), int(TARGET_W * 0.55), int(h * 0.02))],
-        ),
-    )
-
-    # Footer newsletter + copyright mentions
-    img = inpaint_mask(
-        img,
-        rect_mask(
-            img.shape,
-            [
-                (int(TARGET_W * 0.62), int(h * 0.965), int(TARGET_W * 0.34), int(h * 0.012)),
-                (int(TARGET_W * 0.62), int(h * 0.978), int(TARGET_W * 0.34), int(h * 0.010)),
-                (int(TARGET_W * 0.04), int(h * 0.992), int(TARGET_W * 0.45), int(h * 0.006)),
-            ],
-        ),
-    )
-
-    # Testimonial body copy patches (approx)
-    for box in scale_boxes(
-        [
-            (120, 3200, 760, 120),
-            (980, 3200, 760, 120),
-            (1840, 3200, 760, 120),
-        ],
-        sx,
-    ):
-        img = inpaint_mask(img, rect_mask(img.shape, [box]))
-
-    return img
-
-
-def process_shop_full() -> np.ndarray:
-    src = pil_to_bgr(Image.open(KOVA / "商城.png"))
-    img = resize_width_bgr(src)
-    h = img.shape[0]
-
-    img = scrub_machine_heading(img)
-
-    # Coffee capsule grids (multiple sections)
-    for y0, y1 in [
-        (int(h * 0.16), int(h * 0.28)),
-        (int(h * 0.28), int(h * 0.40)),
-        (int(h * 0.40), int(h * 0.52)),
-    ]:
-        img = remove_brown_box_logos(img, y0, y1)
-
-    # Syrups + bundles product renders
-    for y0, y1 in [
-        (int(h * 0.52), int(h * 0.64)),
-        (int(h * 0.64), int(h * 0.76)),
-        (int(h * 0.76), int(h * 0.88)),
-    ]:
-        img = remove_brown_box_logos(img, y0, y1)
-        img = remove_orange_label_logos(img, y0, y1)
-
-    # Machine section: hopper logos + Philips baristina on reference hardware
-    sx = TARGET_W / src.shape[1]
-    img = inpaint_mask(
-        img,
-        rect_mask(
-            img.shape,
-            scale_boxes(
-                [
-                    (900, 1180, 180, 90),
-                    (2100, 1180, 180, 90),
-                    (400, 3300, 420, 140),  # philips baristina on white machine
-                ],
-                sx,
-            ),
-        ),
-    )
-
-    # Full-page product render pass
-    img = remove_brown_box_logos(img, int(h * 0.12), int(h * 0.90))
-    img = remove_orange_label_logos(img, int(h * 0.45), int(h * 0.90))
-
-    return img
-
-
-def process_pdp_full() -> np.ndarray:
-    src = pil_to_bgr(Image.open(KOVA / "下单页.png"))
-    img = resize_width_bgr(src)
-    sx = TARGET_W / src.shape[1]
-    h = img.shape[0]
-
-    # Top promo bar
-    img = inpaint_mask(img, rect_mask(img.shape, scale_boxes([(0, 0, 3840, 72)], sx)))
-
-    # "With Cumulus, the possibilities..." block
-    img = inpaint_mask(
-        img,
-        rect_mask(img.shape, scale_boxes([(120, 5200, 1700, 120)], sx)),
-    )
-
-    # Review mentioning cumulus
-    img = inpaint_mask(
-        img,
-        rect_mask(img.shape, scale_boxes([(980, 6800, 760, 160)], sx)),
-    )
-
-    # Footer newsletter mentions
-    img = inpaint_mask(
-        img,
-        rect_mask(
-            img.shape,
-            [
-                (int(TARGET_W * 0.62), int(h * 0.965), int(TARGET_W * 0.34), int(h * 0.012)),
-                (int(TARGET_W * 0.62), int(h * 0.978), int(TARGET_W * 0.34), int(h * 0.010)),
-            ],
-        ),
-    )
-
-    return img
-
-
-def process_home_hero() -> np.ndarray:
-    src = pil_to_bgr(Image.open(KOVA / "主页.png"))
-    # crop hero viewport from top of homepage export
-    crop = src[0 : int(src.shape[0] * 0.14), :]
-    img = resize_width_bgr(crop)
-    sx = TARGET_W / src.shape[1]
-
-    img = inpaint_mask(img, rect_mask(img.shape, scale_boxes([(0, 0, 3840, 72)], sx)))
-    img = redraw_hero_copy(img)
-    return img
-
-
-def process_product_frame(src_name: str) -> np.ndarray:
-    src = pil_to_bgr(Image.open(KOVA / src_name))
-    crop = src[0 : int(src.shape[0] * 0.62), :]
-    img = resize_width_bgr(crop, width=900)
-    h, w = img.shape[:2]
-    for _ in range(4):
-        img = remove_brown_box_logos(img, 0, h)
-        img = remove_orange_label_logos(img, 0, h)
-    # explicit side-panel wordmarks on box renders
-    img = inpaint_mask(
-        img,
-        rect_mask(
-            img.shape,
-            [
-                (int(w * 0.50), int(h * 0.10), int(w * 0.28), int(h * 0.30)),
-                (int(w * 0.06), int(h * 0.48), int(w * 0.18), int(h * 0.14)),
-            ],
-        ),
-    )
-    return img
-
-
-def process_product_capsule_only(crop_name: str) -> np.ndarray:
-    src = pil_to_bgr(Image.open(KOVA / crop_name))
-    img = resize_width_bgr(src, width=900)
-    return img
-
-
-def copy_png(src: Path, name: str) -> None:
-    im = Image.open(src)
-    if im.mode != "RGBA":
-        im = im.convert("RGBA")
-    for d in (CASE3, CASE3_PUB):
-        im.save(d / name, "PNG", optimize=True)
+def scrub_page_logos(img: np.ndarray, mode: str = "home") -> np.ndarray:
+    if mode == "shop":
+        return scrub_shop_page(img)
+    return scrub_home_page(img)
 
 
 def write_pair(name: str, img: np.ndarray, ext: str = "jpg") -> None:
@@ -371,6 +220,14 @@ def write_pair(name: str, img: np.ndarray, ext: str = "jpg") -> None:
             save_jpeg(img, path)
         else:
             save_png(img, path)
+
+
+def copy_png(src: Path, name: str) -> None:
+    im = Image.open(src)
+    if im.mode != "RGBA":
+        im = im.convert("RGBA")
+    for d in (CASE3, CASE3_PUB):
+        im.save(d / name, "PNG", optimize=True)
 
 
 def rebuild_cover() -> None:
@@ -383,38 +240,68 @@ def rebuild_cover() -> None:
         crop_w = w
         crop_h = int(round(crop_w / ratio))
     left = max(0, int((w - crop_w) * 0.12))
-    top = 0
-    out = hero[top : top + crop_h, left : left + crop_w]
+    out = hero[0:crop_h, left : left + crop_w]
     out = cv2.resize(out, (1920, 1200), interpolation=cv2.INTER_LANCZOS4)
     for d in (BASE / "assets", BASE / "lithos/public/assets"):
         save_jpeg(out, d / "work3-kova.png")
 
 
+def process_full_page(src_name: str, extra=None, mode: str = "home") -> np.ndarray:
+    src = pil_to_bgr(Image.open(KOVA / src_name))
+    sx = TARGET_W / src.shape[1]
+    img = resize_width_bgr(src)
+    img = scrub_page_logos(img, mode=mode)
+    if extra:
+        img = extra(img, sx)
+    return img
+
+
 def main() -> None:
-    ensure_dirs()
-    print("Processing home-full...")
-    write_pair("home-full.jpg", process_home_full())
-    print("Processing shop-full...")
-    write_pair("shop-full.jpg", process_shop_full())
-    print("Processing pdp-full...")
-    write_pair("pdp-full.jpg", process_pdp_full())
-    print("Processing home-hero...")
-    write_pair("home-hero.jpg", process_home_hero())
-    print("Processing cart...")
-    cart = resize_width_bgr(pil_to_bgr(Image.open(KOVA / "主页右侧购物车.png")))
-    write_pair("cart.jpg", cart)
-    print("Processing product shots...")
-    write_pair("product-ritual.png", process_product_capsule_only("ritual-medium-crop.png.png"), ext="png")
-    write_pair("product-syrup.png", process_product_capsule_only("valor-crop.png.png"), ext="png")
-    print("Copying capsule PNGs...")
+    CASE3.mkdir(parents=True, exist_ok=True)
+    CASE3_PUB.mkdir(parents=True, exist_ok=True)
+
+    print("home-full (resize + small logo erase only)...")
+    write_pair("home-full.jpg", process_full_page("主页.png", patch_hero_cumulus_word, mode="home"))
+
+    print("shop-full...")
+    write_pair("shop-full.jpg", process_full_page("商城.png", patch_shop_machine_title, mode="shop"))
+
+    print("pdp-full...")
+    write_pair("pdp-full.jpg", process_full_page("下单页.png", mode="home"))
+
+    print("home-hero...")
+    src = pil_to_bgr(Image.open(KOVA / "主页.png"))
+    sx = TARGET_W / src.shape[1]
+    crop = src[0 : int(src.shape[0] * 0.14), :]
+    hero = resize_width_bgr(crop)
+    hero = patch_hero_cumulus_word(hero, sx)
+    write_pair("home-hero.jpg", hero)
+
+    print("cart (direct copy)...")
+    write_pair("cart.jpg", resize_width_bgr(pil_to_bgr(Image.open(KOVA / "主页右侧购物车.png"))))
+
+    print("product shots (direct copy, no processing)...")
+    for src_name, out_name in [
+        ("ritual-medium-crop.png.png", "product-ritual.png"),
+        ("valor-crop.png.png", "product-syrup.png"),
+    ]:
+        im = resize_width_bgr(pil_to_bgr(Image.open(KOVA / src_name)), width=900)
+        write_pair(out_name, im, ext="png")
+
+    print("capsules (direct copy)...")
     copy_png(KOVA / "Capsule_Lucid_front_alpha2.png.png", "cap-lucid.png")
     copy_png(KOVA / "delve-crop.png.png", "cap-delve.png")
     copy_png(KOVA / "ritual-medium-crop.png.png", "cap-ritual.png")
     copy_png(KOVA / "valor-crop.png.png", "cap-valor.png")
-    print("Copying review card...")
-    review = resize_width_bgr(pil_to_bgr(Image.open(KOVA / "Group 5.png")), width=720)
-    write_pair("review.png", review, ext="png")
-    print("Rebuilding portfolio cover...")
+
+    print("review (direct copy)...")
+    write_pair(
+        "review.png",
+        resize_width_bgr(pil_to_bgr(Image.open(KOVA / "Group 5.png")), width=720),
+        ext="png",
+    )
+
+    print("portfolio cover...")
     rebuild_cover()
     print("Done.")
 
