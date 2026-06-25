@@ -30,7 +30,7 @@ window.LithosCaseStrings.work3 = {
     'overview.eyebrow': 'Overview',
     'overview.title': '项目背景',
     'overview.lead':
-      'KOVA（隶属 The Cumulus Coffee Company）是一个专注「冷萃」的家用精品咖啡品牌——一台一键出杯的冷萃咖啡机，搭配水彩风格的铝制胶囊。此前品牌主要依赖第三方零售渠道，客单价高的机器缺乏品牌化的销售场景，复购率高的胶囊也无法沉淀为订阅。他们需要一个<strong>自有的品牌官网 + 在线商城</strong>，既能把「冷萃专家」的故事讲透，又能高效完成从种草到复购的转化。',
+      'KOVA 是一个专注「冷萃」的家用精品咖啡品牌——一台一键出杯的冷萃咖啡机，搭配水彩风格的铝制胶囊。此前品牌主要依赖第三方零售渠道，客单价高的机器缺乏品牌化的销售场景，复购率高的胶囊也无法沉淀为订阅。他们需要一个<strong>自有的品牌官网 + 在线商城</strong>，既能把「冷萃专家」的故事讲透，又能高效完成从种草到复购的转化。',
     'facts.1.num': '5 款',
     'facts.1.label': '胶囊风味家族 + 咖啡机 / 糖浆 / 配件',
     'facts.2.num': '30+',
@@ -208,7 +208,7 @@ window.LithosCaseStrings.work3 = {
     'overview.eyebrow': 'Overview',
     'overview.title': 'Project background',
     'overview.lead':
-      'KOVA (part of The Cumulus Coffee Company) is a premium home coffee brand focused on cold brew—a one-touch cold-brew machine paired with watercolor-style aluminum capsules. The brand had relied largely on third-party retail: high-ticket machines lacked a branded sales experience, and high-repeat capsules couldn\'t build into subscriptions. They needed an <strong>owned brand site + online store</strong> to tell the "cold brew expert" story and efficiently convert from discovery to repeat purchase.',
+      'KOVA is a premium home coffee brand focused on cold brew—a one-touch cold-brew machine paired with watercolor-style aluminum capsules. The brand had relied largely on third-party retail: high-ticket machines lacked a branded sales experience, and high-repeat capsules couldn\'t build into subscriptions. They needed an <strong>owned brand site + online store</strong> to tell the "cold brew expert" story and efficiently convert from discovery to repeat purchase.',
     'facts.1.num': '5',
     'facts.1.label': 'Capsule flavor family + machine / syrups / accessories',
     'facts.2.num': '30+',
